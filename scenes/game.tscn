@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://b1ibju2pkpvuo"]
+[gd_scene load_steps=2 format=3 uid="uid://b1ibju2pkpvuo"]
+
+[ext_resource type="PackedScene" uid="uid://4jliljymaf4g" path="res://scenes/dialogue_interface.tscn" id="1_hiqgu"]
 
 [node name="Game" type="Node2D"]
+
+[node name="DialogueInterface" parent="." instance=ExtResource("1_hiqgu")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_vertical = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 611.0
+offset_bottom = 159.0
+size_flags_vertical = 8
+text = "play story
+"
+
+[connection signal="pressed" from="Button" to="DialogueInterface" method="_continue_story"]
