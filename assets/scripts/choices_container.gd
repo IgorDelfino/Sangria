@@ -26,7 +26,7 @@ func create_options(choices : Array):
 				choice_button.is_important = tags_dictionary["important"]
 		
 		add_child(choice_button)
-		choice_id += 1w
+		choice_id += 1
 
 func clear_options():
 	var children = self.get_children()

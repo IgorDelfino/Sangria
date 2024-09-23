@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqk1e1rf8d63b"
-path="res://.godot/imported/neutral.jpg-946e5ea6deefec5b4d774ed0f8c4b64c.ctex"
+uid="uid://2tjjlbty34ie"
+path="res://.godot/imported/neutral.png-f9bcbb5030da86dd680425610ab56f77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/inez/neutral.jpg"
-dest_files=["res://.godot/imported/neutral.jpg-946e5ea6deefec5b4d774ed0f8c4b64c.ctex"]
+source_file="res://assets/sprites/characters/bernard/neutral.png"
+dest_files=["res://.godot/imported/neutral.png-f9bcbb5030da86dd680425610ab56f77.ctex"]
 
 [params]
 

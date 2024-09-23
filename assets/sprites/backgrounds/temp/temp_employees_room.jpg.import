@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c23hpk0byn35l"
-path="res://.godot/imported/neutral.jpg-9c75798f3ef0f9d20c27a7953fe4d336.ctex"
+uid="uid://c7lo5fph5regc"
+path="res://.godot/imported/temp_employees_room.jpg-af6fd869fddc892c0b83e59a8986f17a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/heather/neutral.jpg"
-dest_files=["res://.godot/imported/neutral.jpg-9c75798f3ef0f9d20c27a7953fe4d336.ctex"]
+source_file="res://assets/sprites/backgrounds/temp/temp_employees_room.jpg"
+dest_files=["res://.godot/imported/temp_employees_room.jpg-af6fd869fddc892c0b83e59a8986f17a.ctex"]
 
 [params]
 

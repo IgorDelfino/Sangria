@@ -55,121 +55,96 @@ Someone like Heather, you know she knew a lot of people, spent a lot out time ou
 Do you think she might've... You know...
 Found someone else?
 *How could would you even suggest this to me? #char: Inez
-#char: Loretta
-Just trying to be realistic...
+Just trying to be realistic... #char: Loretta
     **I'd rather not think about this right now. #char: Inez
 *It's not unlikely... #char: Inez
     **But I'd rather not think about this right now. #char: Inez
-#char: Loretta
--I understand. 
-Either way you should ask around, see what everyone else knows.
-I'll be here if you need anything
+-I understand. #char: Loretta
+Either way you should ask around, see what everyone else knows. #char: Loretta
+I'll be here if you need anything #char: Loretta
 *Thanks, Loretta. I'll do that. #char: Inez
 *If you hear anything just let me know. #char: Inez
-#char: Loretta
-Before you go, would you like a drink, honey? 
-Once the bar opens up I'll be pretty busy, so enjoy some exclusive attention while you can.
-*Sure
-Great, what to you want?
+Before you go, would you like a drink, honey? #char: Loretta
+Once the bar opens up I'll be pretty busy, so enjoy some exclusive attention while you can. #char: Loretta
+*Sure #char: Inez
+Great, what to you want? #char: Loretta
 **A bloody mary with O- blood. #char: Inez
-#char: Loretta
---Ok... Here you go.
+--Ok... Here you go. #char: Loretta
 **It's a little sour, but in a good way. Thanks, Loretta. #char: Inez
 **A caipirinha with AB+ blood. #char: Inez
 #char: Loretta
 --Ok... Here you go.
-**Yesh, this one is realy strong, but you nailed it as always. Thanks, Loretta. #char: Inez
+**[Yesh, this one is realy strong.] But still pretty good. Thanks, Loretta. #char: Inez
+-Glad you like it. #char: Loretta
+*Not now, thanks. #char: Inez
+No problem. #char: Loretta
 #char: Loretta
--Glad you like it.
-*Not now, thanks.
-#char: Loretta
-No problem.
-#char: Loretta
--Nice talking to you. See in a bit, hopefully.
+-Nice talking to you. See in a bit, hopefully. #char: Loretta
 
 * [Talk to Alec] -> Alec
 * [Talk to Jo] -> Jo
 * [Talk to Bernard] -> Bernard
 
 == Alec ==
-Inez?
+Inez? #char: Alec
 *Alec, can we talk? #char: Inez
-#char: Alec
--Depends. Are you going to start nagging about something like last time?
-    **You mean when you wanted to bring in 40 guests and told they were all VIP? #char: Inez
-    #char: Alec
-    --I still don't get what the problem was.
-    **Because they were all in line demanding to get in, even though we were full and have no such thing as a VIP section! #char: Inez
-    Guess who had to handle your mess alone out there.
-    #char: Alec
-    --So? That's your job...
-    You're a though vamp! I knew you could handle it and you did.
+ Depends. Are you going to start nagging about something like last time? #char: Alec
+    **[You mean when you wanted to bring in 40 guests?] And told they were all VIP? #char: Inez
+    --I still don't get what the problem was. #char: Alec
+    **[Because they were all in line demanding to get in.] Even though we were full and have no such thing as a VIP section! #char: Inez
+    Guess who had to handle your mess alone out there. #char: Alec
+    --So? That's your job... #char: Alec
+    You're a though vamp! I knew you could handle it and you did. #char: Alec
     ***I guess... #char: Inez
 *How are things, Alec? #char: Inez
-#char: Alec
-Huh, what's this about?
+Huh, what's this about? #char: Alec
     **What do you mean, pal? #char: Inez
-    #char: Alec
-    Since when do you care how things are with me?
+    Since when do you care how things are with me? #char: Alec
         ***I care. #char: Inez
-    #char: Alec
-    If you say so...
+    If you say so... #char: Alec
         ***Yeah, you're right. #char: Inez
-#char: Alec
-- Can we get to when you tell me what you want?
+- Can we get to when you tell me what you want? #char: Alec
 *Have you seen or spoken to Heather recently? #char: Inez
-#char: Alec
--How recent?
+-How recent? #char: Alec
 *Today recent. #char: Inez
-#char: Alec
--No. But I saw her yesterday.
+-No. But I saw her yesterday. #char: Alec
 *Was she acting weird? #char: Inez
-#char: Alec
--Yeah but isn't that was she's like most days? 
+-Yeah but isn't that was she's like most days? #char: Alec
 *Was it at band practice? #char: Inez
-#char: Alec
--No, she made it pretty clear she's done with that. 
-It was around here at the bar.
+-No, she made it pretty clear she's done with that. #char: Alec
+It was around here at the bar. #char: Alec
 *Did she mention me? #char: Inez
 *How was she exactly, Alec? #char: Inez
-#char: Alec
--Something happened huh? 
-Before I answer how about you tell me what's going on? 
-*Will it kill you to just help me? 
-#char: Alec
-Help you with what, Inez? 
-If you two had a fight or something that's your problem, I don't care.
+-Something happened huh? #char: Alec
+Before I answer how about you tell me what's going on? #char: Inez
+*Will it kill you to just help me? #char: Inez
+Help you with what, Inez? #char: Alec
+If you two had a fight or something that's your problem, I don't care. #char: Alec
 **Why would you assume that? #char: Inez
 *She left. #char: Inez
-#char: Alec
---What do you mean?
+--What do you mean? #char: Alec
 **She got a bunch of her stuff from the apartment and took off probably, I don't know #char: Inez
-#char: Alec
----She what?!
-What did you do?
+---She what?! #char: Alec
+What did you do? #char: Alec
 **Why would you assume it had something to do with me? #char: Inez
-#char: Alec
--C'mon, she tells me stuff.
-She said you guys got into an argument these days. You said some harsh things.
+-C'mon, she tells me stuff. #char: Alec
+She said you guys got into an argument these days. You said some harsh things. #char: Alec
 *Well, the same goes for her. #char: Inez
-*But I didn't think... We made up, everything was fine. #char: Inez
-#char: Alec
--Yeah, I don't know.
-She could still show up.
-Honestly, I'm not sure it had something to do with you two either, with how things were in the band.
-She was always telling us to take things more seriously. 
-Talking about going on tour, signing a record deal...
-But you know that's not how things work with us vamps, right?
+*But we made up... everything was fine. #char: Inez
+-Yeah, I don't know. #char: Alec
+She could still show up. #char: Alec
+Honestly, I'm not sure it had something to do with you two either, with how things were in the band. #char: Alec
+She was always telling us to take things more seriously. #char: Alec
+Talking about going on tour, signing a record deal... #char: Alec
+But you know that's not how things work with us vamps, right? #char: Alec
 *Where are you getting at? #char: Inez
 *Yeah... She was difficult about these things. #char: Inez
-#char: Alec
--It's possible she went after that on her own. Fame and all that stuff. 
+-It's possible she went after that on her own. Fame and all that stuff. #char: Alec
 *I can see it happening. #char: Inez
 *I don't think she would take it this far. #char: Inez
-#char: Alec
--Either way, Heather needs to realise she belongs with us.
-This was an... interesting chat.
-Yeah, keep asking around, I'll do the same.
+-Either way, Heather needs to realise she belongs with us. #char: Alec
+This was an... interesting chat. #char: Alec
+Yeah, keep asking around, I'll do the same. #char: Alec
 *Okay... #char: Inez
 *Thanks, Alec. #char: Inez
 -	(gather_one)
@@ -178,144 +153,113 @@ Yeah, keep asking around, I'll do the same.
 
 -> Jo
 == Jo ==
-#char: Jo
-Inez. Shouldn't you be outside?
+Inez. Shouldn't you be outside?#char: Jo
 *Just need to talk to you for a sec... #char: Inez
-#char: Jo
--I don't have a second. And neither do you! The bar is about to open.
-Have you seen the line out there?
+-I don't have a second. And neither do you! The bar is about to open. #char: Jo
+Have you seen the line out there? #char: Jo
 *I know, Jo, but... people can wait. #char: Inez
-#char: Jo
--You know what happens to the people waiting? They get restless 
-And when they get inside they are grumpy and everything annoys them.
-So they start to annoy us! 
-And everyone is miserable and they tell their friends they had a shitty experience.
-Soon enough: boom! We have no more clients.
+-You know what happens to the people waiting? They get restless #char: Jo
+And when they get inside they are grumpy and everything annoys them. #char: Jo
+So they start to annoy us! #char: Jo
+And everyone is miserable and they tell their friends they had a shitty experience. #char: Jo
+Soon enough: boom! We have no more clients. #char: Jo
 *Gods, is this what's like inside your head? #char: Inez
 *I get it Jo, but this is important. #char: Inez
-#char: Jo
--Fine, just tell me already so we don't waste anymore time.
+-Fine, just tell me already so we don't waste anymore time. #char: Jo
 *Did Heather tell you if she was going somewhere? #char: Inez
 *Have you seen Heather today? #char: Inez
-#char: Jo
--Oh, please, is that all?!
-The answer is no. Or rather, I don't remember, because I'm way to busy with things that actually matter.
-Like taking care of the bar!
+-Oh, please, is that all?! #char: Jo
+The answer is no. Or rather, I don't remember, because I'm way to busy with things that actually matter. #char: Jo
+Like taking care of the bar! #char: Jo
 *Alright, I'll leave you alone... #char: Inez
 *If you see her please let me know. #char: Inez
-#char: Jo
-I'll do my best to remember.
-#char: Jo
--Actually... I have a message for Heather too.
-If you find her.
-Tell her I need my money back! 
+I'll do my best to remember. #char: Jo
+-Actually... I have a message for Heather too. #char: Jo
+If you find her. #char: Jo
+Tell her I need my money back! #char: Jo
 *Huh? What happened? #char: Inez
-#char: Jo
--That's between me and her.
-Unless you want to pay back what she owes me?
+-That's between me and her. #char: Jo
+Unless you want to pay back what she owes me? #char: Jo
 *No, I'm good. #char: Inez
-#char: Jo
--Isn't this a good thing for you vampires, anyway? If she's gone.
-Considering the mess she always made around here.
+-Isn't this a good thing for you vampires, anyway? If she's gone. #char: Jo
+Considering the mess she always made around here. #char: Jo
 *We don't cast out anybody. #char: Inez
 *Not to me. I'll always want to be by her. #char: Inez
-#char: Jo
--Cute.
-Don't worry, trouble always finds its way back around.
-If you're looking for something to do in the meantime, I can give you a list of things to do around the bar...
+-Cute. #char: Jo
+Don't worry, trouble always finds its way back around. #char: Jo
+If you're looking for something to do in the meantime, I can give you a list of things to do around the bar... #char: Jo
 *Thanks, maybe later. #char: Inez
 *I need to focus on finding Heather. #char: Inez
-#char: Jo
-Alright, alright...
-#char: Jo
--Are we done here? Now remember: you're a bouncer! Go outside!
+Alright, alright... #char: Jo
+-Are we done here? Now remember: you're a bouncer! Go outside! #char: Jo
 - (gather_one)
 * [Talk to Bernard] -> Bernard
 
 -> Bernard
 == Bernard ==
-#char: Bernard
-Excuse me, you're Inez, correct?
+Excuse me, you're Inez, correct? #char: Bernard
 *Who's asking? #char: Inez
 *The bar is not open yet, pal. #char: Inez
-#char: Bernard
-I'm not a costumer I'm....
-#char: Bernard
--Bernard. Private detective.
-Mind if I ask you a few questions? 
+I'm not a costumer I'm.... #char: Bernard
+-Bernard. Private detective. #char: Bernard
+Mind if I ask you a few questions? #char: Bernard
 *Who let you in? #char: Inez
-#char: Bernard
--Jo. The owner, I assume.
+-Jo. The owner, I assume. #char: Bernard
 *What do you want? #char: Inez
 *We don't deal with outsiders. #char: Inez
-#char: Bernard
--I was hired to investigate by some human families, but I'm like you guys.
+-I was hired to investigate by some human families, but I'm like you guys. #char: Bernard
 *Vampire? #char: Inez
-#char: Bernard
--Werewolf, actually
+-Werewolf, actually #char: Bernard
 *So not like us, then. #char: Inez
-#char: Bernard
--Yes, well, a supernatural being nonetheless.
-I'm looking into the disappearence of an entire group of friends. 
-This bar was the last place they were seen.
-They were all fans of a band that plays here. The Arteries? 
+-Yes, well, a supernatural being nonetheless. #char: Bernard
+I'm looking into the disappearence of an entire group of friends. #char: Bernard
+This bar was the last place they were seen. #char: Bernard
+They were all fans of a band that plays here. The Arteries? #char: Bernard
 *Maybe we can help each other out. #char: Inez
 I'm looking for the vocalist of that band. #char: Inez
-#char: Bernard
---Interesting, is she missing?
+--Interesting, is she missing? #char: Bernard
 **She left our house today, took a suitcase full of clothes and everything. #char: Inez
-#char: Bernard
---And do you think she did so willingly?
+--And do you think she did so willingly? #char: Bernard
 **I don't think so, something must have forced her. #char: Inez
 **It's possible, she had some issues of her own. #char: Inez
-#char: Bernard
---I don't think we can classify this as a missing person yet. But given the context...
+--I don't think we can classify this as a missing person yet. But given the context... #char: Bernard
 *And what do you want with me? #char: Inez
-#char: Bernard
-Just to ask some basic questions such as: have you seen them?
+Just to ask some basic questions such as: have you seen them? #char: Bernard
 Here's a photo.
-**I don't think so. A lot of fans who come in and out. #char: Inez
-#char: Bernard
---Got it, and at what time is your shift exactly?
+**[I don't think so.] A lot of fans who come in and out. #char: Inez
+--Got it, and at what time is your shift exactly? #char: Bernard
 **20 pm to 3 am. #char: Inez
 **Night. Because I'm a vampire. #char: Inez
-#char: Bernard
---Huh, understood.
-Listen, I tried talking to the people around here, but most of them shut me out pretty quick.
-Do you know where I can find the other band members?
+--Huh, understood. #char: Bernard
+Listen, I tried talking to the people around here, but most of them shut me out pretty quick. #char: Bernard
+Do you know where I can find the other band members? #char: Bernard
 **Did you talk to the vocalist, Heather, by any chance? #char: Inez
-#char: Bernard
-No, she was the only one I couldn't get a hold on, actually.
+No, she was the only one I couldn't get a hold on, actually. #char: Bernard
 **I'm not saying any more then them. #char: Inez
-#char: Bernard
---That's find because the only one I couldn't get a hold on is their vocalist, Heather.
-I really only want to know where she is.
+--That's find because the only one I couldn't get a hold on is their vocalist, Heather. #char: Bernard
+I really only want to know where she is. #char: Bernard
 **Yeah, you and me both. #char: Inez
-#char: Bernard
-So you haven't seen her too? Interesting...
-#char: Bernard
--Do you think the two may be connected? 
+So you haven't seen her too? Interesting... #char: Bernard
+-Do you think the two may be connected? #char: Bernard
 *Seems like a stretch. #char: Inez
 *Could be. #char: Inez
-#char: Bernard
--Did you know Heather well? 
+-Did you know Heather well? #char: Bernard 
 *She was my companion of 20 years. #char: Inez
 *Yeah, you could say we were close. #char: Inez
-#char: Bernard
--So you probably want to find her, right? 
-Would you be interested in working together? I have a strong feeling this is all connected.
-I help you find your girlfriend and you give me an in with your coworkers or coven or whatever you call them.
+-So you probably want to find her, right? #char: Bernard
+Would you be interested in working together? I have a strong feeling this is all connected. #char: Bernard
+I help you find your girlfriend and you give me an in with your coworkers or coven or whatever you call them. #char: Bernard
 *Listen, I have a lot on my mind right now. #char: Inez
 I'll have to get back to you on that. #char: Inez
 #char: Bernard
--Of course. I'll be here. 
+-Of course. I'll be here. #char: Bernard
 
-Ok, wow, a lot to think about. #char: Inez
+Ok, a lot to think about. #char: Inez
 I should probably finally do my job and let these people in now. #char: Inez
-->OpenBar
+->OPENBAR
 
-===OpenBar===
-Everyone seems to have their own theory about what happened. #char: Inez
+==OPENBAR==
+Everyone seems to have their own theory about what happened.
 Loretta thinks I'm getting cheated on and got left for someone else which is... Not nice.
 Alec seems pretty convinced she took off to pursue her dreams and become a rockstar or something. 
 Jo doesn't think it's that serious, she's just having a momentary crisis and will eventually show up.

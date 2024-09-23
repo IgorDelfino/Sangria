@@ -5,12 +5,15 @@ class_name DialogueInterface
 @onready var _ink_player = $InkPlayer
 
 @export var choices_container : ChoicesContainer
-@export var ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
+@export_file("*.json") var ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
 @export var dialogue_label : DialogueLabel
 @export var name_label : NameLabel
 @export var animation_player : AnimationPlayer
+@export var character_portrait : Sprite2D
 
 @export var typing_speed : float = 0.05
+
+@export_dir var portraits
 
 var button_path = "res://scenes/components/choice_button.tscn"
 
@@ -18,6 +21,10 @@ var is_choice_important
 
 var story_in_progress : bool = false
 var typing_in_progress : bool = false
+
+var current_char : String
+
+var current_clickable : InteractableArea
 
 func _ready():
 	self.hide()
@@ -36,7 +43,6 @@ func _process(_delta):
 func _story_loaded(success : bool):
 	if !success:
 		return
-	_ink_player.choose_path("OpenBar")
 
 func organize_line_tags(tags : Array):
 	var tag_dictionary : Dictionary = {}
@@ -52,18 +58,30 @@ func organize_line_tags(tags : Array):
 		tag_dictionary[key_value_pair[0]] = key_value_pair[1]
 	return tag_dictionary
 
-func _continue_story(ink_file_path : String, knot_address : String):
+func _continue_story(knot_address : String = ""):
+	if knot_address.length() > 0:
+		_ink_player.choose_path(knot_address)
+	
+	current_clickable.hide()
+	
 	if self.hidden: self.show()
+	
 	story_in_progress = true
-	print(_ink_player.current_path)
+	
 	if _ink_player.can_continue and !_ink_player.has_choices:
 		var text = _ink_player.continue_story()
 		
 		if !_ink_player.get_current_tags().is_empty():
 			var tags = organize_line_tags(_ink_player.get_current_tags())
-			
 			if tags.has("char"):
 				name_label.change_name_label(tags["char"])
+				current_char = tags["char"].strip_edges(true,true).to_lower()
+				
+				if tags.has("mood"):
+					character_portrait.texture = load(portraits + "/" + current_char + "/" + tags["mood"] + ".png")
+				else:
+					character_portrait.texture = load(portraits + "/" + current_char + "/neutral.png")
+				
 		
 		dialogue_label.visible_characters = 0
 		
@@ -77,6 +95,7 @@ func _continue_story(ink_file_path : String, knot_address : String):
 	else:
 		story_in_progress = false
 		self.hide()
+		current_clickable.show()
 
 func _skip_text_typing():
 	dialogue_label.visible_characters = -1
