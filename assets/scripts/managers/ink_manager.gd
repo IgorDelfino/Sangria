@@ -46,16 +46,18 @@ func _story_loaded(success : bool):
 
 func organize_line_tags(tags : Array):
 	var tag_dictionary : Dictionary = {}
+	
 	for tag : String in tags:
 		var tag_no_spaces = tag.strip_edges(true,true)
 		var key_value_pair = tag_no_spaces.split(":")
 		
-		if key_value_pair[1] == "true" or key_value_pair[1] == "true":
+		if key_value_pair[1] == "true" or key_value_pair[1] == "false":
 			var bool_value = key_value_pair[1] == "true" if true else false
 			tag_dictionary[key_value_pair[0]] = bool_value
 			return tag_dictionary
 		
 		tag_dictionary[key_value_pair[0]] = key_value_pair[1]
+	
 	return tag_dictionary
 
 func _continue_story(knot_address : String = ""):
