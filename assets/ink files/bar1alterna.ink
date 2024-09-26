@@ -1,13 +1,19 @@
 ->bar1
 ==bar1==
-"Ok, I'm here. It's not open yet, so I still have some time to talk to people before they need me to get back to bouncer duties outside." #char: Inez
-"Loretta is behind the bar as usual, Alec is by the stage and Jo is walking around finding something to worry about" #char: Inez
-"Who is that man sitting in the corner? Weird." #char: Inez
+Ok, I'm here. It's not open yet, so I still have some time to talk to people before they need me to get back to bouncer duties outside. #char: Inez
+Loretta is behind the bar as usual, Alec is by the stage and Jo is walking around finding something to worry about #char: Inez
+Who is that man sitting in the corner? Weird. #char: Inez
+->talk
 
+->talk
+==talk==
 *[Talk to Loretta] -> Loretta
 *[Talk to Alec] -> Alec
 *[Talk to Jo] -> Jo
 *[Talk to Bernard] -> Bernard
+Ok, a lot to think about. #char: Inez
+I should probably finally do my job and let these people in now. #char: Inez
+->OPENBAR
 
 == Loretta ==
 Hello there #char: Loretta 
@@ -64,26 +70,22 @@ Either way you should ask around, see what everyone else knows. #char: Loretta
 I'll be here if you need anything #char: Loretta
 *Thanks, Loretta. I'll do that. #char: Inez
 *If you hear anything just let me know. #char: Inez
-Before you go, would you like a drink, honey? #char: Loretta
+-Before you go, would you like a drink, honey? #char: Loretta
 Once the bar opens up I'll be pretty busy, so enjoy some exclusive attention while you can. #char: Loretta
 *Sure #char: Inez
 Great, what to you want? #char: Loretta
 **A bloody mary with O- blood. #char: Inez
---Ok... Here you go. #char: Loretta
-**It's a little sour, but in a good way. Thanks, Loretta. #char: Inez
+It's a little sour, but in a good way. Thanks, Loretta. #char: Inez
 **A caipirinha with AB+ blood. #char: Inez
 #char: Loretta
 --Ok... Here you go.
 **[Yesh, this one is realy strong.] But still pretty good. Thanks, Loretta. #char: Inez
--Glad you like it. #char: Loretta
+Glad you like it. #char: Loretta
 *Not now, thanks. #char: Inez
 No problem. #char: Loretta
 #char: Loretta
--Nice talking to you. See in a bit, hopefully. #char: Loretta
-
-* [Talk to Alec] -> Alec
-* [Talk to Jo] -> Jo
-* [Talk to Bernard] -> Bernard
+-Nice talking to you. See you in a bit, hopefully. #char: Loretta
+->talk
 
 == Alec ==
 Inez? #char: Alec
@@ -148,8 +150,7 @@ Yeah, keep asking around, I'll do the same. #char: Alec
 *Okay... #char: Inez
 *Thanks, Alec. #char: Inez
 -	(gather_one)
-* [Talk to Jo] -> Jo
-* [Talk to Bernard] -> Bernard
+->talk
 
 -> Jo
 == Jo ==
@@ -193,7 +194,7 @@ If you're looking for something to do in the meantime, I can give you a list of 
 Alright, alright... #char: Jo
 -Are we done here? Now remember: you're a bouncer! Go outside! #char: Jo
 - (gather_one)
-* [Talk to Bernard] -> Bernard
+->talk
 
 -> Bernard
 == Bernard ==
@@ -253,10 +254,7 @@ I help you find your girlfriend and you give me an in with your coworkers or cov
 I'll have to get back to you on that. #char: Inez
 #char: Bernard
 -Of course. I'll be here. #char: Bernard
-
-Ok, a lot to think about. #char: Inez
-I should probably finally do my job and let these people in now. #char: Inez
-->OPENBAR
+->talk
 
 ==OPENBAR==
 Everyone seems to have their own theory about what happened.

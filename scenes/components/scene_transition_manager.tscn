@@ -1,0 +1,190 @@
+[gd_scene load_steps=31 format=3 uid="uid://3ct5ihcbo4xd"]
+
+[ext_resource type="Script" path="res://scenes/components/scene_transition_manager.gd" id="1_jkdnl"]
+[ext_resource type="Texture2D" uid="uid://j3cjs763v5da" path="res://assets/sprites/backgrounds/temp/temp_bartending_area.jpg" id="2_yr52s"]
+[ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="3_53cnk"]
+[ext_resource type="Texture2D" uid="uid://cxn6x7qpsyih2" path="res://assets/sprites/transition/mask/frame_1.png" id="3_cp1dp"]
+[ext_resource type="Texture2D" uid="uid://nq2511dbrdvr" path="res://assets/sprites/transition/paper/paper_frame_1.png" id="3_qy4ih"]
+[ext_resource type="Texture2D" uid="uid://dp0qygo6b82r8" path="res://assets/sprites/transition/mask/frame_2.png" id="5_wy4mp"]
+[ext_resource type="Texture2D" uid="uid://bj70vu30ttubx" path="res://assets/sprites/transition/mask/frame_0.png" id="6_5vmwv"]
+[ext_resource type="Texture2D" uid="uid://lfsk77dknd3u" path="res://assets/sprites/transition/mask/frame_3.png" id="6_goqoa"]
+[ext_resource type="Texture2D" uid="uid://wgj11vdlsdi5" path="res://assets/sprites/transition/mask/frame_4.png" id="7_ycovu"]
+[ext_resource type="Texture2D" uid="uid://cuusc30jo6kei" path="res://assets/sprites/transition/mask/frame_5.png" id="8_n8upx"]
+[ext_resource type="Texture2D" uid="uid://sb5218387eka" path="res://assets/sprites/transition/mask/frame_6.png" id="9_mpcgk"]
+[ext_resource type="Texture2D" uid="uid://bcam8keit8mq8" path="res://assets/sprites/transition/mask/frame_7.png" id="10_s6oi3"]
+[ext_resource type="Texture2D" uid="uid://bu1slw3im1b08" path="res://assets/sprites/transition/mask/frame_8.png" id="11_8crdd"]
+[ext_resource type="Texture2D" uid="uid://bllbuujfnysdo" path="res://assets/sprites/transition/mask/frame_9.png" id="12_dp4fh"]
+[ext_resource type="Texture2D" uid="uid://6p3vkj763ms6" path="res://assets/sprites/transition/mask/frame_10.png" id="13_wpi7r"]
+[ext_resource type="Texture2D" uid="uid://c2irtcyr5ncxw" path="res://assets/sprites/transition/mask/frame_11.png" id="14_fq204"]
+[ext_resource type="Texture2D" uid="uid://cix3u71obtc3j" path="res://assets/sprites/transition/paper/paper_frame_2.png" id="16_kj30x"]
+[ext_resource type="Texture2D" uid="uid://dthkaes5fyjb3" path="res://assets/sprites/transition/paper/paper_frame_0.png" id="17_06fnu"]
+[ext_resource type="Texture2D" uid="uid://787fqquxcqak" path="res://assets/sprites/transition/paper/paper_frame_3.png" id="17_p1d3c"]
+[ext_resource type="Texture2D" uid="uid://dqp6jg6dhjn8v" path="res://assets/sprites/transition/paper/paper_frame_4.png" id="18_j08pb"]
+[ext_resource type="Texture2D" uid="uid://lpqag2q0hj5b" path="res://assets/sprites/transition/paper/paper_frame_5.png" id="19_1pf6o"]
+[ext_resource type="Texture2D" uid="uid://5fgw40nlbjjj" path="res://assets/sprites/transition/paper/paper_frame_6.png" id="20_c3c14"]
+[ext_resource type="Texture2D" uid="uid://bmjfqpgdwubwx" path="res://assets/sprites/transition/paper/paper_frame_7.png" id="21_wxgu6"]
+[ext_resource type="Texture2D" uid="uid://r70hof6exg8h" path="res://assets/sprites/transition/paper/paper_frame_8.png" id="22_7gh1k"]
+[ext_resource type="Texture2D" uid="uid://c4yke3lbmoed6" path="res://assets/sprites/transition/paper/paper_frame_9.png" id="23_sskm7"]
+[ext_resource type="Texture2D" uid="uid://b6ncy284gmk15" path="res://assets/sprites/transition/paper/paper_frame_10.png" id="24_2enyp"]
+[ext_resource type="Texture2D" uid="uid://dejoll8v7iefr" path="res://assets/sprites/transition/paper/paper_frame_11.png" id="25_usai7"]
+
+[sub_resource type="Animation" id="Animation_nqsvq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cp1dp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TearTransitionPaper:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_qy4ih")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TearTransitionPaper:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w64wx"]
+resource_name = "paper_tear_transition"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.891667, 1, 1.09167),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_5vmwv"), ExtResource("3_cp1dp"), ExtResource("5_wy4mp"), ExtResource("6_goqoa"), ExtResource("7_ycovu"), ExtResource("8_n8upx"), ExtResource("9_mpcgk"), ExtResource("10_s6oi3"), ExtResource("11_8crdd"), ExtResource("12_dp4fh"), ExtResource("13_wpi7r"), ExtResource("14_fq204")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TearTransitionPaper:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_06fnu"), ExtResource("3_qy4ih"), ExtResource("16_kj30x"), ExtResource("17_p1d3c"), ExtResource("18_j08pb"), ExtResource("19_1pf6o"), ExtResource("20_c3c14"), ExtResource("21_wxgu6"), ExtResource("22_7gh1k"), ExtResource("23_sskm7"), ExtResource("24_2enyp"), ExtResource("25_usai7")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TearTransitionPaper:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ce144"]
+_data = {
+"RESET": SubResource("Animation_nqsvq"),
+"paper_tear_transition": SubResource("Animation_w64wx")
+}
+
+[node name="SceneTransitionManager" type="CanvasLayer"]
+script = ExtResource("1_jkdnl")
+
+[node name="NextSceneBG" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yr52s")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TearTransitionMask" type="TextureRect" parent="."]
+self_modulate = Color(0.984314, 0.768627, 0.203922, 1)
+clip_children = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cp1dp")
+
+[node name="CurrentSceneBG" type="TextureRect" parent="TearTransitionMask"]
+show_behind_parent = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 31.1111
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_53cnk")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TearTransitionMask"]
+libraries = {
+"": SubResource("AnimationLibrary_ce144")
+}
+
+[node name="TearTransitionPaper" type="TextureRect" parent="."]
+self_modulate = Color(0.311093, 0.183472, 0.640277, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qy4ih")

@@ -31,6 +31,8 @@ func _ready():
 	_ink_player.ink_file = load(ink_file_path)
 	_ink_player.loads_in_background = true
 	
+	__GameManager.load_player_data()
+	
 	await _ink_player.create_story()
 
 func _process(_delta):
@@ -43,7 +45,10 @@ func _process(_delta):
 func _story_loaded(success : bool):
 	if !success:
 		return
-
+		
+	if __GameManager.get_loaded_ink_state():
+		_ink_player.set_state(__GameManager.get_loaded_ink_state())
+	
 func organize_line_tags(tags : Array):
 	var tag_dictionary : Dictionary = {}
 	
@@ -64,7 +69,7 @@ func _continue_story(knot_address : String = ""):
 	if knot_address.length() > 0:
 		_ink_player.choose_path(knot_address)
 	
-	current_clickable.hide()
+	#current_clickable.hide()
 	
 	if self.hidden: self.show()
 	
@@ -93,11 +98,13 @@ func _continue_story(knot_address : String = ""):
 		
 	elif _ink_player.has_choices:
 		choices_container.create_options(_ink_player.current_choices)
+		__GameManager.save_player_data()
 	
 	else:
 		story_in_progress = false
 		self.hide()
-		current_clickable.show()
+		#current_clickable.show()
+		
 
 func _skip_text_typing():
 	dialogue_label.visible_characters = -1

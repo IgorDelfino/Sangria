@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxbkmiqntnuaw"]
+[gd_scene load_steps=5 format=3 uid="uid://bxbkmiqntnuaw"]
 
+[ext_resource type="PackedScene" uid="uid://co2dms5aml6gx" path="res://scenes/game_manager.tscn" id="1_7hbjq"]
 [ext_resource type="PackedScene" uid="uid://4jliljymaf4g" path="res://scenes/dialogue_interface.tscn" id="1_ie1uo"]
 [ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="1_uqf7g"]
 [ext_resource type="PackedScene" uid="uid://dyilnl0rmv67q" path="res://scenes/interactable.tscn" id="2_nh80y"]
 
 [node name="Bar" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_7hbjq")]
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 3
@@ -30,7 +33,6 @@ ink_knot = "Bernard"
 dialogue_interface = NodePath("../../DialogueInterface")
 
 [node name="DialogueInterface" parent="." instance=ExtResource("1_ie1uo")]
-unique_name_in_owner = true
 visible = false
 offset_right = 0.0
 offset_bottom = 0.0
