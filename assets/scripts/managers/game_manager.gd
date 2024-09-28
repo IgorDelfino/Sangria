@@ -2,14 +2,24 @@ extends Node
 
 class_name GameManager
 
+const InteractableArea := preload("res://assets/scripts/Interactables.gd")
+
+@export var dialogue_interface : DialogueInterface
+@export var current_scene : CurrentScene
+
 var player_file = "user://save.dat"
 var ink_state : JSON
 
-var Instance : GameManager
-
 func _ready():
-	if !Instance is GameManager:
-		Instance = self
+	InteractableArea.dialogue_interface = dialogue_interface
+	InteractableArea.current_scene = current_scene
+
+func create_player_data():
+	var player_data_dictionary = {
+		"INK_STATE": ink_state,
+	}
+	
+	return player_data_dictionary
 
 func save_player_data():
 	print("tried to save player data")
@@ -19,13 +29,6 @@ func save_player_data():
 	file.store_var(player_data)
 	
 	print("Data saved")
-
-func create_player_data():
-	var player_data_dictionary = {
-		"INK_STATE": ink_state,
-	}
-	
-	return player_data_dictionary
 
 func load_player_data():
 	var file = FileAccess.open(player_file, FileAccess.READ)

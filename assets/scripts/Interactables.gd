@@ -13,7 +13,12 @@ enum interactableType {
 @export_subgroup("Dialogue")
 @export var ink_knot : String
 
-@export var dialogue_interface : DialogueInterface
+static var dialogue_interface : DialogueInterface
+
+@export_subgroup("Prompt")
+@export_file("*.tscn") var scene_path : String
+
+static var current_scene : CurrentScene
 
 func _on_area_2d_got_clicked() -> void:
 	match InteractableType:
@@ -24,4 +29,5 @@ func _on_area_2d_got_clicked() -> void:
 		interactableType.Inventory:
 			print("Isso é para guardar um item no inventário")
 		interactableType.Prompt:
+			current_scene.go_to_scene(scene_path)
 			print("Isso é para fazer algum prompt")

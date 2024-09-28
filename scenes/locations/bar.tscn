@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxbkmiqntnuaw"]
+[gd_scene load_steps=5 format=3 uid="uid://spnq1mq2dn8h"]
 
-[ext_resource type="PackedScene" uid="uid://co2dms5aml6gx" path="res://scenes/game_manager.tscn" id="1_7hbjq"]
-[ext_resource type="PackedScene" uid="uid://4jliljymaf4g" path="res://scenes/dialogue_interface.tscn" id="1_ie1uo"]
-[ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="1_uqf7g"]
-[ext_resource type="PackedScene" uid="uid://dyilnl0rmv67q" path="res://scenes/interactable.tscn" id="2_nh80y"]
+[ext_resource type="Script" path="res://scenes/location.gd" id="1_yxucf"]
+[ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="2_82x6i"]
+[ext_resource type="PackedScene" uid="uid://dyilnl0rmv67q" path="res://scenes/interactable.tscn" id="3_jg4bc"]
+[ext_resource type="Script" path="res://assets/scripts/clickables.gd" id="3_n0pue"]
 
-[node name="Bar" type="Node2D"]
-
-[node name="GameManager" parent="." instance=ExtResource("1_7hbjq")]
+[node name="Location" type="Node2D"]
+script = ExtResource("1_yxucf")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 3
@@ -23,17 +22,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_uqf7g")
+texture = ExtResource("2_82x6i")
 
 [node name="Clickables" type="Node" parent="."]
+script = ExtResource("3_n0pue")
 
-[node name="Bernard" parent="Clickables" node_paths=PackedStringArray("dialogue_interface") instance=ExtResource("2_nh80y")]
-position = Vector2(780, 469)
-ink_knot = "Bernard"
-dialogue_interface = NodePath("../../DialogueInterface")
-
-[node name="DialogueInterface" parent="." instance=ExtResource("1_ie1uo")]
-visible = false
-offset_right = 0.0
-offset_bottom = 0.0
-mouse_filter = 2
+[node name="Interactable" parent="Clickables" instance=ExtResource("3_jg4bc")]
+position = Vector2(1716, 421)
+InteractableType = 2
+scene_path = "res://scenes/locations/empl_room.tscn"

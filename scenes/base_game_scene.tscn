@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ibju2pkpvuo"]
+
+[ext_resource type="PackedScene" uid="uid://3ct5ihcbo4xd" path="res://scenes/scene_transition_manager.tscn" id="1_07od4"]
+[ext_resource type="PackedScene" uid="uid://co2dms5aml6gx" path="res://scenes/game_manager.tscn" id="2_o3pyy"]
+[ext_resource type="PackedScene" uid="uid://4jliljymaf4g" path="res://scenes/dialogue_interface.tscn" id="3_cukrc"]
+[ext_resource type="Script" path="res://scenes/current_scene.gd" id="4_h1ca2"]
+[ext_resource type="PackedScene" uid="uid://spnq1mq2dn8h" path="res://scenes/locations/bar.tscn" id="5_yc4ye"]
+
+[node name="BaseGameNode" type="Node2D"]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="SceneTransitionManager" parent="Managers" instance=ExtResource("1_07od4")]
+
+[node name="GameManager" parent="Managers" node_paths=PackedStringArray("dialogue_interface", "current_scene") instance=ExtResource("2_o3pyy")]
+dialogue_interface = NodePath("../../Interfaces/DialogueInterface")
+current_scene = NodePath("../../CurrentScene")
+
+[node name="Interfaces" type="Node" parent="."]
+
+[node name="DialogueInterface" parent="Interfaces" instance=ExtResource("3_cukrc")]
+visible = false
+z_index = 1
+
+[node name="CurrentScene" type="Node" parent="." node_paths=PackedStringArray("scene_transition")]
+script = ExtResource("4_h1ca2")
+scene_transition = NodePath("../Managers/SceneTransitionManager")
+
+[node name="Location" parent="CurrentScene" instance=ExtResource("5_yc4ye")]
