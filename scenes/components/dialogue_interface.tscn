@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ij7wpn0ekn7t"]
+[gd_scene load_steps=20 format=3 uid="uid://4jliljymaf4g"]
 
 [ext_resource type="Script" path="res://addons/inkgd/ink_player.gd" id="1_q31yc"]
 [ext_resource type="Script" path="res://assets/scripts/managers/ink_manager.gd" id="1_vcgyl"]

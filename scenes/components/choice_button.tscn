@@ -1,34 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4h67bqbmodkq"]
+[gd_scene load_steps=6 format=3 uid="uid://d4h67bqbmodkq"]
 
 [ext_resource type="Theme" uid="uid://n7enbsr4f83t" path="res://assets/themes/choices_theme.tres" id="1_tvgnf"]
 [ext_resource type="Script" path="res://assets/scripts/choices_button.gd" id="2_i0ebo"]
+[ext_resource type="Texture2D" uid="uid://dxs8gi17pv3em" path="res://assets/sprites/ui/reticule.png" id="3_bkenw"]
+[ext_resource type="Texture2D" uid="uid://hd46hxs7nump" path="res://assets/sprites/ui/choice_box/normal/up.png" id="3_em7mv"]
+[ext_resource type="Texture2D" uid="uid://8qx8opyqsc7" path="res://assets/sprites/ui/choice_box/normal/down.png" id="4_vnx7w"]
 
-[node name="Button" type="Button" node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
-offset_right = 8.0
-offset_bottom = 8.0
-size_flags_horizontal = 3
+[node name="Button" type="Button" node_paths=PackedStringArray("margin_container", "button_label")]
+z_index = 10
+custom_minimum_size = Vector2(0, 90)
+offset_right = 720.0
+offset_bottom = 90.0
+scale = Vector2(0.6, 0.6)
 size_flags_vertical = 3
 theme = ExtResource("1_tvgnf")
-theme_type_variation = &"FlatButton"
 script = ExtResource("2_i0ebo")
-button_label = NodePath("VBoxContainer/ButtonLabel")
+margin_container = NodePath("Container/VBoxContainer/MarginContainer")
+button_label = NodePath("Container/VBoxContainer/MarginContainer/RichTextLabel")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Container" type="Control" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Container"]
+layout_mode = 2
+offset_right = 2480.0
+offset_bottom = 1948.0
+size_flags_horizontal = 0
+texture = ExtResource("3_bkenw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 721.0
+offset_bottom = 68.0
 alignment = 1
 
-[node name="ButtonLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/VBoxContainer/MarginContainer"]
+z_index = 1
 layout_mode = 2
 mouse_filter = 1
-theme = ExtResource("1_tvgnf")
 bbcode_enabled = true
+text = "[center]talk talk talk talk talk [/center]"
 fit_content = true
 scroll_active = false
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+offset_top = -16.0
+offset_right = 721.0
+offset_bottom = 21.0
+texture = ExtResource("3_em7mv")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -35.03
+offset_right = 721.0
+offset_bottom = 15.97
+grow_vertical = 0
+texture = ExtResource("4_vnx7w")
+expand_mode = 3
+stretch_mode = 4
 
 [connection signal="pressed" from="." to="." method="_on_button_pressed"]

@@ -5,7 +5,7 @@ class_name DialogueInterface
 @onready var _ink_player = $InkPlayer
 
 @export var choices_container : ChoicesContainer
-@export_file("*.json") var ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
+@export_file("*.json") var ink_file_path
 @export var dialogue_label : DialogueLabel
 @export var name_label : NameLabel
 @export var animation_player : AnimationPlayer
@@ -26,6 +26,10 @@ var current_char : String
 
 var current_clickable : InteractableArea
 
+var counter := 0
+
+var block_interaction := false
+
 func _ready():
 	self.hide()
 	_ink_player.ink_file = load(ink_file_path)
@@ -36,12 +40,20 @@ func _ready():
 	await _ink_player.create_story()
 
 func _process(_delta):
-	if typing_in_progress and Input.is_action_just_pressed("skip_typing"):
+	if block_interaction: get_viewport().set_input_as_handled()
+	
+	if typing_in_progress and Input.is_action_just_released("skip_typing"):
+		get_viewport().set_input_as_handled()
 		_skip_text_typing()
-	elif story_in_progress and Input.is_action_just_pressed("next_dialogue"):
+	elif story_in_progress and Input.is_action_just_released("next_dialogue"):
+		get_viewport().set_input_as_handled()
 		_continue_story()
 	return
-
+	
+func replace_current_ink_file(new_ink_file_path):
+	ink_file_path = new_ink_file_path
+	_ink_player.ink_file = new_ink_file_path
+	
 func _story_loaded(success : bool):
 	if !success:
 		return
@@ -65,17 +77,23 @@ func organize_line_tags(tags : Array):
 	
 	return tag_dictionary
 
+var continue_counter := 0
+
 func _continue_story(knot_address : String = ""):
+	continue_counter += 1
 	if knot_address.length() > 0:
 		_ink_player.choose_path(knot_address)
 	
-	#current_clickable.hide()
+	current_clickable.hide()
 	
 	if self.hidden: self.show()
 	
 	story_in_progress = true
 	
+	print("continue counter: ", continue_counter)
+	
 	if _ink_player.can_continue and !_ink_player.has_choices:
+		print("entered can continue")
 		var text = _ink_player.continue_story()
 		
 		if !_ink_player.get_current_tags().is_empty():
@@ -98,16 +116,20 @@ func _continue_story(knot_address : String = ""):
 		
 	elif _ink_player.has_choices:
 		choices_container.create_options(_ink_player.current_choices)
+		
+		block_interaction = true
+		
 		__GameManager.save_player_data()
 	
 	else:
 		story_in_progress = false
 		self.hide()
-		#current_clickable.show()
+		current_clickable.show()
 		
 
 func _skip_text_typing():
 	dialogue_label.visible_characters = -1
+	typing_in_progress = false
 	
 func type_out_line(text : String):
 	typing_in_progress = true
@@ -120,10 +142,12 @@ func type_out_line(text : String):
 	typing_in_progress = false
 
 func _select_choice(choice_id : int, important : bool):
+	
 	_ink_player.choose_choice_index(choice_id)
 	
 	if important:
 		animation_player.play("bite_animation")
 	
 	choices_container.clear_options()
+	block_interaction = false
 	self._continue_story()

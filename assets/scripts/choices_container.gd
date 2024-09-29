@@ -7,6 +7,7 @@ const button_path : String = "res://scenes/components/choice_button.tscn"
 @export var dialogue_interface : DialogueInterface
 
 func create_options(choices : Array):
+	print("tried to create options");
 	if !self.get_children().is_empty(): return
 	var choice_button_scene : PackedScene = preload(button_path);
 	
@@ -16,8 +17,10 @@ func create_options(choices : Array):
 		var choice_button = choice_button_scene.instantiate()
 		
 		choice_button.choice_id = choice_id
-		choice_button.choice_text = choice.text
+		choice_button.button_label.text = "[center]" + choice.text + "[/center]"
 		choice_button.dialogue_interface = dialogue_interface
+		
+		print("choice text: ", choice.text)
 		
 		if choice.tags:
 			var tags_dictionary = dialogue_interface.organize_line_tags(choice.tags)
