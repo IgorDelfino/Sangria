@@ -2,7 +2,9 @@ extends Control
 
 class_name ChoicesButton
 
-var dialogue_interface : DialogueInterface
+static var dialogue_interface : DialogueInterface
+
+@export var margin_container : MarginContainer
 
 var choice_id : int
 var choice_text : String
@@ -12,9 +14,6 @@ var enabled : bool = true
 
 @export var button_label : RichTextLabel
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	button_label.text = "[center]" + choice_text + "[/center]"
-
 func _on_button_pressed():
+	print("pressed")
 	dialogue_interface._select_choice(choice_id, is_important)

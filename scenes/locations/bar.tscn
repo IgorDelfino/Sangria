@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://spnq1mq2dn8h"]
 
-[ext_resource type="Script" path="res://scenes/location.gd" id="1_yxucf"]
+[ext_resource type="Script" path="res://assets/scripts/location.gd" id="1_yxucf"]
 [ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="2_82x6i"]
 [ext_resource type="PackedScene" uid="uid://dyilnl0rmv67q" path="res://scenes/interactable.tscn" id="3_jg4bc"]
 [ext_resource type="Script" path="res://assets/scripts/clickables.gd" id="3_n0pue"]
@@ -27,7 +27,16 @@ texture = ExtResource("2_82x6i")
 [node name="Clickables" type="Node" parent="."]
 script = ExtResource("3_n0pue")
 
-[node name="Interactable" parent="Clickables" instance=ExtResource("3_jg4bc")]
+[node name="Interactable" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
 position = Vector2(1716, 421)
-InteractableType = 2
+InteractableType = 3
+location = NodePath("../..")
+ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
+scene_path = "res://scenes/locations/empl_room.tscn"
+
+[node name="Interactable2" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
+position = Vector2(768, 472)
+location = NodePath("../..")
+ink_knot = "Bernard"
+ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
 scene_path = "res://scenes/locations/empl_room.tscn"

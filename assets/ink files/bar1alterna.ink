@@ -2,8 +2,8 @@
 ==bar1==
 Ok, I'm here. It's not open yet, so I still have some time to talk to people before they need me to get back to bouncer duties outside. #char: Inez
 Loretta is behind the bar as usual, Alec is by the stage and Jo is walking around finding something to worry about #char: Inez
-Who is that man sitting in the corner? Weird. #char: Inez
-->talk
+Who is that man sitting in the corner? Weird. #char: Inez #autosave
+->talk 
 
 ->talk
 ==talk==
@@ -12,8 +12,8 @@ Who is that man sitting in the corner? Weird. #char: Inez
 *[Talk to Jo] -> Jo
 *[Talk to Bernard] -> Bernard
 Ok, a lot to think about. #char: Inez
-I should probably finally do my job and let these people in now. #char: Inez
-->OPENBAR
+I should probably finally do my job and let these people in now. #char: Inez #autosave
+->OPENBAR 
 
 == Loretta ==
 Hello there #char: Loretta 
@@ -62,9 +62,9 @@ Do you think she might've... You know...
 Found someone else?
 *How could would you even suggest this to me? #char: Inez
 Just trying to be realistic... #char: Loretta
-    **I'd rather not think about this right now. #char: Inez
+I'd rather not think about this right now. #char: Inez
 *It's not unlikely... #char: Inez
-    **But I'd rather not think about this right now. #char: Inez
+But I'd rather not think about this right now. #char: Inez
 -I understand. #char: Loretta
 Either way you should ask around, see what everyone else knows. #char: Loretta
 I'll be here if you need anything #char: Loretta
@@ -84,7 +84,7 @@ Glad you like it. #char: Loretta
 *Not now, thanks. #char: Inez
 No problem. #char: Loretta
 #char: Loretta
--Nice talking to you. See you in a bit, hopefully. #char: Loretta
+-Nice talking to you. See you in a bit, hopefully. #char: Loretta #autosave
 ->talk
 
 == Alec ==
@@ -146,10 +146,9 @@ But you know that's not how things work with us vamps, right? #char: Alec
 *I don't think she would take it this far. #char: Inez
 -Either way, Heather needs to realise she belongs with us. #char: Alec
 This was an... interesting chat. #char: Alec
-Yeah, keep asking around, I'll do the same. #char: Alec
 *Okay... #char: Inez
-*Thanks, Alec. #char: Inez
--	(gather_one)
+*Thanks, Alec. #char: Inez #autosave
+- Keep asking around, I'll do the same. #char: Alec #autosave
 ->talk
 
 -> Jo
@@ -192,8 +191,7 @@ If you're looking for something to do in the meantime, I can give you a list of 
 *Thanks, maybe later. #char: Inez
 *I need to focus on finding Heather. #char: Inez
 Alright, alright... #char: Jo
--Are we done here? Now remember: you're a bouncer! Go outside! #char: Jo
-- (gather_one)
+-Are we done here? Now remember: you're a bouncer! Go outside! #char: Jo #autosave
 ->talk
 
 -> Bernard
@@ -219,7 +217,7 @@ They were all fans of a band that plays here. The Arteries? #char: Bernard
 *Maybe we can help each other out. #char: Inez
 I'm looking for the vocalist of that band. #char: Inez
 --Interesting, is she missing? #char: Bernard
-**She left our house today, took a suitcase full of clothes and everything. #char: Inez
+She left our house today, took a suitcase full of clothes and everything. #char: Inez
 --And do you think she did so willingly? #char: Bernard
 **I don't think so, something must have forced her. #char: Inez
 **It's possible, she had some issues of her own. #char: Inez
@@ -253,7 +251,7 @@ I help you find your girlfriend and you give me an in with your coworkers or cov
 *Listen, I have a lot on my mind right now. #char: Inez
 I'll have to get back to you on that. #char: Inez
 #char: Bernard
--Of course. I'll be here. #char: Bernard
+-Of course. I'll be here. #char: Bernard #autosave
 ->talk
 
 ==OPENBAR==
@@ -261,17 +259,17 @@ Everyone seems to have their own theory about what happened.
 Loretta thinks I'm getting cheated on and got left for someone else which is... Not nice.
 Alec seems pretty convinced she took off to pursue her dreams and become a rockstar or something. 
 Jo doesn't think it's that serious, she's just having a momentary crisis and will eventually show up.
-And this new guy Bernard is on a quest of his own, but believes these seemingly coincidential disappearences might not be that coincidential after all...
+And this new guy Bernard is on a quest of his own, but believes these seemingly coincidential disappearences might not be that coincidential after all... #autosave
 Who do I think is on the right track?
 *Loretta #important:true
-As much as it pains me to say it but... Heather has been so distant in our relationship lately, it's not wild to think she could've found someone else. I should ask Loretta more about what she knows.
+As much as it pains me to say it but... Heather has been so distant in our relationship lately, it's not wild to think she could've found someone else. I should ask Loretta more about what she knows. #autosave
 ->DONE
 *Alec #important:true
-Now that I think about it, Heather has always been pretty subborn when in comes to her music career. Even from before she turned it was something she wanted badly. Alec probably knows more, so I should talk to him.
+Now that I think about it, Heather has always been pretty subborn when in comes to her music career. Even from before she turned it was something she wanted badly. Alec probably knows more, so I should talk to him. #autosave
 ->DONE
 *Jo #important:true
-Yeah... It's only been one day and I'm probably being overdramatic. Heather always pulled something like this from time to time. I should talk to Jo about keeping myself busy so I won't go crazy worrying about this.
+Yeah... It's only been one day and I'm probably being overdramatic. Heather always pulled something like this from time to time. I should talk to Jo about keeping myself busy so I won't go crazy worrying about this. #autosave
 ->DONE
 *Bernard #important:true
-I just can't shake off this uneasy feeling. I don't know, maybe I'm just being delusional and just got dumped, but what if something happened? And the fact that they were her fans... Bernard also probably knows more than he let on, should talk to him again.
+I just can't shake off this uneasy feeling. I don't know, maybe I'm just being delusional and just got dumped, but what if something happened? And the fact that they were her fans... Bernard also probably knows more than he let on, should talk to him again. #autosave
 ->DONE
