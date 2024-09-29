@@ -1,29 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ibju2pkpvuo"]
+[gd_scene load_steps=8 format=3 uid="uid://b1ibju2pkpvuo"]
 
 [ext_resource type="PackedScene" uid="uid://3ct5ihcbo4xd" path="res://scenes/scene_transition_manager.tscn" id="1_07od4"]
 [ext_resource type="PackedScene" uid="uid://co2dms5aml6gx" path="res://scenes/game_manager.tscn" id="2_o3pyy"]
-[ext_resource type="PackedScene" uid="uid://4jliljymaf4g" path="res://scenes/dialogue_interface.tscn" id="3_cukrc"]
-[ext_resource type="Script" path="res://scenes/current_scene.gd" id="4_h1ca2"]
+[ext_resource type="AudioStream" path="res://assets/sounds/ambience/sangria_amb_pub_vazio.wav" id="3_bxekm"]
+[ext_resource type="PackedScene" path="res://scenes/components/dialogue_interface.tscn" id="3_cukrc"]
+[ext_resource type="Script" path="res://assets/scripts/current_scene.gd" id="4_h1ca2"]
+[ext_resource type="AudioStream" path="res://assets/sounds/songs/sangria_mus_pub_loop.wav" id="4_hpvg6"]
 [ext_resource type="PackedScene" uid="uid://spnq1mq2dn8h" path="res://scenes/locations/bar.tscn" id="5_yc4ye"]
 
 [node name="BaseGameNode" type="Node2D"]
 
 [node name="Managers" type="Node" parent="."]
 
-[node name="SceneTransitionManager" parent="Managers" instance=ExtResource("1_07od4")]
-
-[node name="GameManager" parent="Managers" node_paths=PackedStringArray("dialogue_interface", "current_scene") instance=ExtResource("2_o3pyy")]
+[node name="GameManager" parent="Managers" node_paths=PackedStringArray("scene_transition", "dialogue_interface", "current_scene") instance=ExtResource("2_o3pyy")]
+scene_transition = NodePath("../SceneTransitionManager")
 dialogue_interface = NodePath("../../Interfaces/DialogueInterface")
 current_scene = NodePath("../../CurrentScene")
 
-[node name="Interfaces" type="Node" parent="."]
+[node name="SceneTransitionManager" parent="Managers" instance=ExtResource("1_07od4")]
 
-[node name="DialogueInterface" parent="Interfaces" instance=ExtResource("3_cukrc")]
-visible = false
-z_index = 1
+[node name="Sounds" type="Node" parent="."]
 
-[node name="CurrentScene" type="Node" parent="." node_paths=PackedStringArray("scene_transition")]
+[node name="Ambience" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("3_bxekm")
+autoplay = true
+bus = &"Ambience"
+
+[node name="Soundtrack" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_hpvg6")
+autoplay = true
+bus = &"Soundtrack"
+
+[node name="CurrentScene" type="Node" parent="."]
 script = ExtResource("4_h1ca2")
-scene_transition = NodePath("../Managers/SceneTransitionManager")
 
 [node name="Location" parent="CurrentScene" instance=ExtResource("5_yc4ye")]
+
+[node name="Interfaces" type="CanvasLayer" parent="."]
+
+[node name="DialogueInterface" parent="Interfaces" instance=ExtResource("3_cukrc")]
+process_priority = 1
+visible = false
+z_index = 5
+mouse_filter = 0

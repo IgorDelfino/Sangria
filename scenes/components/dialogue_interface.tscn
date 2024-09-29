@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://ij7wpn0ekn7t"]
+
+[ext_resource type="Script" path="res://addons/inkgd/ink_player.gd" id="1_q31yc"]
+[ext_resource type="Script" path="res://assets/scripts/managers/ink_manager.gd" id="1_vcgyl"]
+[ext_resource type="Script" path="res://assets/scripts/dialogue_label.gd" id="4_7bc2y"]
+[ext_resource type="Script" path="res://assets/scripts/choices_container.gd" id="4_jbc45"]
+[ext_resource type="Texture2D" uid="uid://bkhbucby612pu" path="res://assets/sprites/ui/unnamed_dialogue_box.png" id="4_jeuri"]
+[ext_resource type="Texture2D" uid="uid://c6nqg4bkm8xg5" path="res://assets/sprites/ui/bite/Bite_1.png" id="4_ji0bd"]
+[ext_resource type="Texture2D" uid="uid://2tjjlbty34ie" path="res://assets/sprites/characters/bernard/neutral.png" id="4_n5iup"]
+[ext_resource type="Texture2D" uid="uid://spat07wc5f6x" path="res://assets/sprites/ui/bite/Bite_0.png" id="4_tsyjk"]
+[ext_resource type="Theme" uid="uid://dhsxw5p2wtbye" path="res://assets/themes/dialogue_theme.tres" id="5_pdom7"]
+[ext_resource type="Texture2D" uid="uid://ck7oq1qkusm11" path="res://assets/sprites/ui/bite/Bite_2.png" id="6_8ofum"]
+[ext_resource type="Texture2D" uid="uid://pxh8dro4k2vv" path="res://assets/sprites/ui/bite/Bite_3.png" id="7_3bt8d"]
+[ext_resource type="Script" path="res://assets/scripts/name_label.gd" id="7_j0uat"]
+[ext_resource type="Texture2D" uid="uid://byhkvjmdy1x86" path="res://assets/sprites/ui/tag.png" id="8_a1ani"]
+[ext_resource type="Texture2D" uid="uid://dprscehlrfdo3" path="res://assets/sprites/ui/bite/Bite_4.png" id="8_d183x"]
+[ext_resource type="Theme" uid="uid://72o2pxpktng8" path="res://assets/themes/name_theme.tres" id="8_p7751"]
+
+[sub_resource type="Resource" id="Resource_uaqt5"]
+
+[sub_resource type="Animation" id="Animation_gyp6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_tsyjk")]
+}
+
+[sub_resource type="Animation" id="Animation_yhohf"]
+resource_name = "bite_animation"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.733333, 0.833333, 0.933333, 1.03333, 1.13333, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_tsyjk"), ExtResource("4_ji0bd"), ExtResource("6_8ofum"), ExtResource("7_3bt8d"), ExtResource("8_d183x"), ExtResource("4_tsyjk"), ExtResource("4_tsyjk"), ExtResource("4_ji0bd"), ExtResource("6_8ofum"), ExtResource("7_3bt8d"), ExtResource("8_d183x"), ExtResource("4_tsyjk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjwyy"]
+_data = {
+"RESET": SubResource("Animation_gyp6q"),
+"bite_animation": SubResource("Animation_yhohf")
+}
+
+[node name="DialogueInterface" type="Control" node_paths=PackedStringArray("choices_container", "dialogue_label", "name_label", "animation_player", "character_portrait")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("1_vcgyl")
+choices_container = NodePath("DialogueBox/ChoicesContainer")
+ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
+dialogue_label = NodePath("DialogueBox/DialogueLabel")
+name_label = NodePath("DialogueBox/NameBox/NameLabel")
+animation_player = NodePath("Bite/BiteAnimator")
+character_portrait = NodePath("Portrait")
+portraits = "res://assets/sprites/characters"
+
+[node name="InkPlayer" type="Node" parent="."]
+script = ExtResource("1_q31yc")
+ink_file = SubResource("Resource_uaqt5")
+
+[node name="Portrait" type="Sprite2D" parent="."]
+position = Vector2(960, 416)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("4_n5iup")
+
+[node name="Bite" type="Sprite2D" parent="."]
+position = Vector2(1703, 167)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_tsyjk")
+
+[node name="BiteAnimator" type="AnimationPlayer" parent="Bite"]
+libraries = {
+"": SubResource("AnimationLibrary_xjwyy")
+}
+
+[node name="DialogueBox" type="Sprite2D" parent="."]
+position = Vector2(960, 875)
+scale = Vector2(1, 1.00444)
+texture = ExtResource("4_jeuri")
+
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueBox"]
+offset_left = -775.0
+offset_top = -133.0
+offset_right = 821.0
+offset_bottom = 106.0
+theme = ExtResource("5_pdom7")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac lorem ut nisi congue luctus id sed nulla. Proin vitae commodo augue, et sodales tellus. Praesent eu tellus fringilla, vulputate tellus quis, blandit nulla.
+"
+script = ExtResource("4_7bc2y")
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="DialogueBox" node_paths=PackedStringArray("dialogue_interface")]
+clip_children = 2
+offset_left = 152.0
+offset_top = -529.0
+offset_right = 872.0
+offset_bottom = -186.0
+theme_override_constants/separation = 35
+alignment = 2
+script = ExtResource("4_jbc45")
+dialogue_interface = NodePath("../..")
+
+[node name="NameBox" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(-742, -177.213)
+scale = Vector2(0.552571, 0.55257)
+texture = ExtResource("8_a1ani")
+
+[node name="NameLabel" type="RichTextLabel" parent="DialogueBox/NameBox"]
+offset_left = -258.0
+offset_right = 252.0
+offset_bottom = 107.0
+rotation = -0.17873
+theme = ExtResource("8_p7751")
+bbcode_enabled = true
+text = "[center]Loretta[/center]"
+script = ExtResource("7_j0uat")
+
+[connection signal="loaded" from="InkPlayer" to="." method="_story_loaded"]
