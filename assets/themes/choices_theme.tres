@@ -1155,3 +1155,5 @@ Button/styles/focus = SubResource("StyleBoxEmpty_8qf4p")
 Button/styles/hover = SubResource("StyleBoxEmpty_ssjc7")
 Button/styles/normal = SubResource("StyleBoxEmpty_yji2x")
 Button/styles/pressed = SubResource("StyleBoxEmpty_dnkas")
+ChoiceButton/base_type = &"Button"
+ChoiceButton/styles/normal = null

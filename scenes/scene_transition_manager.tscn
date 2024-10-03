@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://3ct5ihcbo4xd"]
 
-[ext_resource type="Script" path="res://assets/scripts/scene_transition_manager.gd" id="1_jkdnl"]
+[ext_resource type="Script" path="res://assets/scripts/managers/scene_transition_manager.gd" id="1_jkdnl"]
 [ext_resource type="Texture2D" uid="uid://cxn6x7qpsyih2" path="res://assets/sprites/transition/mask/frame_1.png" id="3_cp1dp"]
 [ext_resource type="Texture2D" uid="uid://nq2511dbrdvr" path="res://assets/sprites/transition/paper/paper_frame_1.png" id="3_qy4ih"]
 [ext_resource type="Texture2D" uid="uid://dp0qygo6b82r8" path="res://assets/sprites/transition/mask/frame_2.png" id="5_wy4mp"]

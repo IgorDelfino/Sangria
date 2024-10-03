@@ -80,7 +80,8 @@ Maybe? Who knows? They look like every single young person who comes in here. Al
 Or fans of Heather, rather, she is actually the one who brings in the crowd, but don't tell Alec I said that... #char: Jo
 I'm not one to badmouth my costumers, but it's true that the younger they are the more annoying they are. #char: Jo
 I don't know how she put up with it, them always coming around and asking for her. Hell, maybe she didn't and that's why she stopped playing with the band. #char: Jo // later if you ask Alec about this he will disagree with Jo
-Also get this: lately we've been having to deal with some freaks who heard this is a spot to meet "magical creatures". I won't have that shit in my bar. Who are you calling magical?! Do I look like an unicorn? I'm human. Well, I was... #char: Jo
+Also get this: lately we've been having to deal with some freaks who heard this is a spot to meet "magical creatures". You should ask Loretta about it, she's the one who had to tell them off. #char: Jo
+I won't have that shit in my bar. And also who are you calling magical?! Do I look like an unicorn? I'm human. Well, I was... #char: Jo
 ->questionsjo
 
 +When did you last see Heather? #char: Inez

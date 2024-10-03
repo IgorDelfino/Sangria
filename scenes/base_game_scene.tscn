@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1ibju2pkpvuo"]
+[gd_scene load_steps=6 format=3 uid="uid://b1ibju2pkpvuo"]
 
 [ext_resource type="PackedScene" uid="uid://3ct5ihcbo4xd" path="res://scenes/scene_transition_manager.tscn" id="1_07od4"]
 [ext_resource type="PackedScene" uid="uid://co2dms5aml6gx" path="res://scenes/game_manager.tscn" id="2_o3pyy"]
-[ext_resource type="AudioStream" uid="uid://ccrdo1ew8ilpk" path="res://assets/sounds/ambience/sangria_amb_pub_vazio.wav" id="3_bxekm"]
 [ext_resource type="PackedScene" uid="uid://4jliljymaf4g" path="res://scenes/components/dialogue_interface.tscn" id="3_cukrc"]
 [ext_resource type="Script" path="res://assets/scripts/current_scene.gd" id="4_h1ca2"]
-[ext_resource type="AudioStream" uid="uid://dxydmof7oubhh" path="res://assets/sounds/songs/sangria_mus_pub_loop.wav" id="4_hpvg6"]
-[ext_resource type="PackedScene" uid="uid://spnq1mq2dn8h" path="res://scenes/locations/bar.tscn" id="5_yc4ye"]
+[ext_resource type="PackedScene" uid="uid://vvbjjwyiaxv7" path="res://scenes/main_menu.tscn" id="6_ycwee"]
 
 [node name="BaseGameNode" type="Node2D"]
 
@@ -22,19 +20,17 @@ current_scene = NodePath("../../CurrentScene")
 [node name="Sounds" type="Node" parent="."]
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("3_bxekm")
 autoplay = true
 bus = &"Ambience"
 
 [node name="Soundtrack" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("4_hpvg6")
 autoplay = true
 bus = &"Soundtrack"
 
 [node name="CurrentScene" type="Node" parent="."]
 script = ExtResource("4_h1ca2")
 
-[node name="Location" parent="CurrentScene" instance=ExtResource("5_yc4ye")]
+[node name="MainMenu" parent="CurrentScene" instance=ExtResource("6_ycwee")]
 
 [node name="Interfaces" type="CanvasLayer" parent="."]
 

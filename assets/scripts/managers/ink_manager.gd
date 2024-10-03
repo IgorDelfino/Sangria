@@ -4,6 +4,8 @@ class_name DialogueInterface
 
 @onready var _ink_player = $InkPlayer
 
+static var GAMEMANAGER : GameManager
+
 @export var choices_container : ChoicesContainer
 @export_file("*.json") var ink_file_path
 @export var dialogue_label : DialogueLabel
@@ -35,8 +37,6 @@ func _ready():
 	_ink_player.ink_file = load(ink_file_path)
 	_ink_player.loads_in_background = true
 	
-	__GameManager.load_player_data()
-	
 	await _ink_player.create_story()
 
 func _process(_delta):
@@ -66,14 +66,19 @@ func organize_line_tags(tags : Array):
 	
 	for tag : String in tags:
 		var tag_no_spaces = tag.strip_edges(true,true)
-		var key_value_pair = tag_no_spaces.split(":")
 		
-		if key_value_pair[1] == "true" or key_value_pair[1] == "false":
-			var bool_value = key_value_pair[1] == "true" if true else false
-			tag_dictionary[key_value_pair[0]] = bool_value
-			return tag_dictionary
+		if tag_no_spaces.contains(":"):
+			var key_value_pair = tag_no_spaces.split(":")
 		
-		tag_dictionary[key_value_pair[0]] = key_value_pair[1]
+			if key_value_pair[1] == "true" or key_value_pair[1] == "false":
+				var bool_value = key_value_pair[1] == "true" if true else false
+				tag_dictionary[key_value_pair[0]] = bool_value
+		
+			tag_dictionary[key_value_pair[0]] = key_value_pair[1]
+		else:
+			if tag_no_spaces == "autosave":
+				print("autosave tag detected")
+				GAMEMANAGER.save_player_data()
 	
 	return tag_dictionary
 
@@ -90,10 +95,7 @@ func _continue_story(knot_address : String = ""):
 	
 	story_in_progress = true
 	
-	print("continue counter: ", continue_counter)
-	
 	if _ink_player.can_continue and !_ink_player.has_choices:
-		print("entered can continue")
 		var text = _ink_player.continue_story()
 		
 		if !_ink_player.get_current_tags().is_empty():
@@ -106,7 +108,6 @@ func _continue_story(knot_address : String = ""):
 					character_portrait.texture = load(portraits + "/" + current_char + "/" + tags["mood"] + ".png")
 				else:
 					character_portrait.texture = load(portraits + "/" + current_char + "/neutral.png")
-				
 		
 		dialogue_label.visible_characters = 0
 		
@@ -118,8 +119,6 @@ func _continue_story(knot_address : String = ""):
 		choices_container.create_options(_ink_player.current_choices)
 		
 		block_interaction = true
-		
-		__GameManager.save_player_data()
 	
 	else:
 		story_in_progress = false

@@ -1,0 +1,227 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhbx4vpxglrpo"]
+
+[ext_resource type="Script" path="res://assets/scripts/hq_cutscene.gd" id="1_055c5"]
+[ext_resource type="Texture2D" uid="uid://djfw7yu214t4n" path="res://assets/sprites/keycaps/mouse_unpressed.png" id="2_xgxht"]
+[ext_resource type="Texture2D" uid="uid://x8snbpi3adk1" path="res://assets/sprites/keycaps/spacebar_unpressed.png" id="3_76tsb"]
+[ext_resource type="Texture2D" uid="uid://br37b6leha7iv" path="res://assets/sprites/keycaps/mouse_pressed.png" id="4_3kpxp"]
+[ext_resource type="Texture2D" uid="uid://5x1bkxxsc430" path="res://assets/sprites/keycaps/spacebar_pressed.png" id="5_h3gpe"]
+
+[sub_resource type="Animation" id="Animation_kyyvx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_xgxht")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Space:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_76tsb")]
+}
+
+[sub_resource type="Animation" id="Animation_vnev4"]
+resource_name = "press_button_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_xgxht"), ExtResource("4_3kpxp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Space:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_76tsb"), ExtResource("5_h3gpe")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v03da"]
+_data = {
+"RESET": SubResource("Animation_kyyvx"),
+"press_button_animation": SubResource("Animation_vnev4")
+}
+
+[sub_resource type="Animation" id="Animation_vt8xl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frames/FaderFrame:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frames/FadingFrame:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o6d8v"]
+resource_name = "fade_color_rect"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frames/FaderFrame:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oo70n"]
+resource_name = "fade_new_frame"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frames/FadingFrame:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fi26"]
+_data = {
+"RESET": SubResource("Animation_vt8xl"),
+"fade_color_rect": SubResource("Animation_o6d8v"),
+"fade_new_frame": SubResource("Animation_oo70n")
+}
+
+[node name="HqCutscene" type="Control" node_paths=PackedStringArray("full_frame", "fading_frame", "button_animation_container", "keycap_animation_player", "animation_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_055c5")
+full_frame = NodePath("Frames/FullFrame")
+fading_frame = NodePath("Frames/FadingFrame")
+button_animation_container = NodePath("Frames/ButtonAnimationContainer")
+keycap_animation_player = NodePath("Frames/ButtonAnimationContainer/KeycapAnimator")
+animation_player = NodePath("FrameFader")
+
+[node name="Frames" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullFrame" type="TextureRect" parent="Frames"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FadingFrame" type="TextureRect" parent="Frames"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonAnimationContainer" type="HBoxContainer" parent="Frames"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -96.0
+offset_right = -24.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Mouse" type="TextureRect" parent="Frames/ButtonAnimationContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_xgxht")
+stretch_mode = 4
+
+[node name="Space" type="TextureRect" parent="Frames/ButtonAnimationContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_76tsb")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="KeycapAnimator" type="AnimationPlayer" parent="Frames/ButtonAnimationContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_v03da")
+}
+
+[node name="FaderFrame" type="ColorRect" parent="Frames"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FrameFader" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1fi26")
+}
+
+[connection signal="animation_finished" from="FrameFader" to="." method="_on_frame_fader_animation_finished"]
