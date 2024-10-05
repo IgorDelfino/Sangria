@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ebhgi2kemk33"]
+
+[ext_resource type="Script" path="res://assets/scripts/scene_audio_container.gd" id="1_icmp6"]
+
+[node name="SceneAudioContainer" type="Node"]
+script = ExtResource("1_icmp6")

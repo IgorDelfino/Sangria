@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtn7ulub7784k"]
+[gd_scene load_steps=14 format=3 uid="uid://dtn7ulub7784k"]
 
 [ext_resource type="Script" path="res://assets/scripts/hq_cutscene.gd" id="1_tstkn"]
 [ext_resource type="Texture2D" uid="uid://djfw7yu214t4n" path="res://assets/sprites/keycaps/mouse_unpressed.png" id="2_3cwn2"]
 [ext_resource type="Texture2D" uid="uid://x8snbpi3adk1" path="res://assets/sprites/keycaps/spacebar_unpressed.png" id="3_g80ld"]
 [ext_resource type="Texture2D" uid="uid://br37b6leha7iv" path="res://assets/sprites/keycaps/mouse_pressed.png" id="4_fg828"]
 [ext_resource type="Texture2D" uid="uid://5x1bkxxsc430" path="res://assets/sprites/keycaps/spacebar_pressed.png" id="5_d6t4f"]
+[ext_resource type="PackedScene" uid="uid://ebhgi2kemk33" path="res://scenes/scene_audio_container.tscn" id="6_nbx5c"]
 
 [sub_resource type="Animation" id="Animation_kyyvx"]
 length = 0.001
@@ -134,7 +135,7 @@ _data = {
 "fade_new_frame": SubResource("Animation_oo70n")
 }
 
-[node name="HqCutscene" type="Control" node_paths=PackedStringArray("full_frame", "fading_frame", "button_animation_container", "keycap_animation_player", "animation_player")]
+[node name="HqCutscene" type="Control" node_paths=PackedStringArray("full_frame", "fading_frame", "button_animation_container", "keycap_animation_player", "animation_player", "scene_audio_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,6 +149,7 @@ button_animation_container = NodePath("Frames/ButtonAnimationContainer")
 keycap_animation_player = NodePath("Frames/ButtonAnimationContainer/KeycapAnimator")
 animation_player = NodePath("FrameFader")
 frames_dir_path = "res://assets/sprites/cutscenes/bed"
+scene_audio_container = NodePath("SceneAudioContainer")
 next_scene_path = "res://scenes/locations/bar.tscn"
 
 [node name="Frames" type="Control" parent="."]
@@ -225,6 +227,8 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_1fi26")
 }
+
+[node name="SceneAudioContainer" parent="." instance=ExtResource("6_nbx5c")]
 
 [connection signal="hq_animation_finished" from="." to="." method="show_button_press_animation"]
 [connection signal="animation_finished" from="FrameFader" to="." method="_on_frame_fader_animation_finished"]

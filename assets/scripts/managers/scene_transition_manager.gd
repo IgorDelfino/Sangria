@@ -5,6 +5,11 @@ class_name SceneTransition
 @export var current_scene_BG : TextureRect
 @export var animation_player : AnimationPlayer
 
+var valid_animation_names := [
+	"paper_tear_transition_1",
+	"paper_tear_transition_2"
+	]
+
 func replace_current_screen():
 	await RenderingServer.frame_post_draw
 	
@@ -14,6 +19,6 @@ func replace_current_screen():
 	
 	current_scene_BG.texture = image_texture
 	
-
 func play_transition_animation():
-	animation_player.play("paper_tear_transition")
+	animation_player.play(valid_animation_names.pick_random())
+	

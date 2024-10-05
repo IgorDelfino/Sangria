@@ -11,6 +11,8 @@ var current_animation_frame := 0
 
 @export_dir var frames_dir_path
 
+@export var scene_audio_container : SceneAudioContainer
+
 @export_file("*.tscn") var next_scene_path : String
 
 static var current_scene : CurrentScene

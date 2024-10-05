@@ -29,7 +29,6 @@ func _on_area_2d_got_clicked() -> void:
 	match InteractableType:
 		interactableType.Dialogue:
 			print("Isso é para ativar um diálogo")
-			print(dialogue_interface)
 			dialogue_interface.current_clickable = self
 			dialogue_interface._continue_story(ink_knot)
 		interactableType.Inventory:
@@ -38,4 +37,3 @@ func _on_area_2d_got_clicked() -> void:
 			current_scene.go_to_scene(scene_path)
 			#dialogue_interface.replace_current_ink_file(ink_file_path)
 			#dialogue_interface._ink_player.create_story()
-			print("Isso é para fazer algum prompt")

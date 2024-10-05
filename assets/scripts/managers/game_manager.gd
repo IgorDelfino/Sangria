@@ -8,11 +8,15 @@ const MasterLocation := preload("res://assets/scripts/location.gd")
 const DialogueInterfaceInstance := preload("res://assets/scripts/managers/ink_manager.gd")
 const HQCutsceneInstance := preload("res://assets/scripts/hq_cutscene.gd")
 const MainMenuButtonsInstance := preload("res://assets/scripts/main_menu_buttons.gd")
+const MainMenuInstance := preload("res://assets/scripts/main_menu.gd")
+# const SceneAudioContainerInstance := preload("")
 
 @export var scene_transition : SceneTransition
 
 @export var dialogue_interface : DialogueInterface
 @export var current_scene : CurrentScene
+
+@export var scene_audio_manager : SceneAudioManager
 
 var player_file = "user://save.dat"
 var ink_state : JSON
@@ -23,6 +27,8 @@ func _ready():
 	
 	MainMenuButtonsInstance.GAMEMANAGER = self
 	MainMenuButtonsInstance.current_scene = current_scene
+	
+	MainMenuInstance.scene_audio_manager = scene_audio_manager
 	
 	HQCutsceneInstance.current_scene = current_scene
 	
