@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://vvbjjwyiaxv7"]
+
+[ext_resource type="VideoStream" path="res://assets/video/menu_BG.ogv" id="1_dmmbt"]
+[ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_lr5ad"]
+[ext_resource type="AudioStream" uid="uid://bcmm3r0jnas2t" path="res://assets/sounds/songs/sangria_mus_menu_intro.wav" id="2_vw31o"]
+[ext_resource type="Texture2D" uid="uid://pkvvdpw6772f" path="res://assets/sprites/sangria_logo.png" id="3_lfs7q"]
+[ext_resource type="Script" path="res://assets/scripts/main_menu_buttons.gd" id="4_nkyfv"]
+[ext_resource type="PackedScene" uid="uid://ebhgi2kemk33" path="res://scenes/scene_audio_container.tscn" id="5_lq3gu"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("scene_audio_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_lr5ad")
+scene_audio_container = NodePath("SceneAudioContainer")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_dmmbt")
+volume_db = -80.0
+autoplay = true
+loop = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -368.0
+offset_top = 56.0
+offset_right = 1332.0
+offset_bottom = 1090.0
+grow_horizontal = 2
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("3_lfs7q")
+stretch_mode = 4
+
+[node name="Menu Buttons" type="VBoxContainer" parent="." node_paths=PackedStringArray("load_game_button")]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -400.0
+offset_right = 200.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+script = ExtResource("4_nkyfv")
+load_game_button = NodePath("Load Game")
+game_start_scene = "res://scenes/cutscenes/bedroom_cutscene.tscn"
+game_load_scene = "res://scenes/load_selector.tscn"
+
+[node name="New Game" type="Button" parent="Menu Buttons"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "New Game"
+
+[node name="Load Game" type="Button" parent="Menu Buttons"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+disabled = true
+text = "Load Game
+"
+
+[node name="Close Game" type="Button" parent="Menu Buttons"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "Close Game
+"
+
+[node name="SceneAudioContainer" parent="." instance=ExtResource("5_lq3gu")]
+soundtrack = ExtResource("2_vw31o")
+
+[connection signal="pressed" from="Menu Buttons/New Game" to="Menu Buttons" method="start_new_game"]
+[connection signal="pressed" from="Menu Buttons/Load Game" to="Menu Buttons" method="load_game"]
+[connection signal="pressed" from="Menu Buttons/Close Game" to="Menu Buttons" method="exit_game"]

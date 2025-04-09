@@ -1,153 +1,173 @@
 extends Control
 
-class_name DialogueInterface
+class_name DialogueManager
 
-@onready var _ink_player = $InkPlayer
+@export var _ink_player : InkPlayer
 
+@export var DialogueLabel : RichTextLabel
+@export var NameLabel : RichTextLabel
+
+@export var DialogueBox : TextureRect
 @export var choices_container : ChoicesContainer
-@export_file("*.json") var ink_file_path
-@export var dialogue_label : DialogueLabel
-@export var name_label : NameLabel
-@export var animation_player : AnimationPlayer
-@export var character_portrait : Sprite2D
 
-@export var typing_speed : float = 0.05
+@export var text_type_time : float = 5.0
 
-@export_dir var portraits
+@export var timer : Timer
 
-var button_path = "res://scenes/components/choice_button.tscn"
+@export var bite_animator : AnimationPlayer
 
-var is_choice_important
+var current_ink_file_json_path : String
 
-var story_in_progress : bool = false
-var typing_in_progress : bool = false
+var typing_state : bool = false
+var can_call_next_sentence : bool = false
 
-var current_char : String
+var available_objective_keys = []
+
+var ink_state_text : String
+
+signal call_next_sentence
+signal finished_typing
+
+var story_has_been_loaded : bool
+
+var is_talking : bool = false
+var waiting_for_choice : bool = false
 
 var current_clickable : InteractableArea
 
-var counter := 0
+var state_to_load : String = ""
 
-var block_interaction := false
+func prime_new_state(last_scene_path, state):
+	state_to_load = state
 
-func _ready():
-	self.hide()
+func load_story(ink_file_path):
+	print("++++ Story is being loaded ++++")
+	story_has_been_loaded = false
 	_ink_player.ink_file = load(ink_file_path)
-	_ink_player.loads_in_background = true
 	
-	__GameManager.load_player_data()
+	
+	print("<l> ",state_to_load," <l>")
 	
 	await _ink_player.create_story()
+	
 
-func _process(_delta):
-	if block_interaction: get_viewport().set_input_as_handled()
+func _ready():
+	GAMEMANAGER.dialogue_interface = self
 	
-	if typing_in_progress and Input.is_action_just_released("skip_typing"):
-		get_viewport().set_input_as_handled()
-		_skip_text_typing()
-	elif story_in_progress and Input.is_action_just_released("next_dialogue"):
-		get_viewport().set_input_as_handled()
-		_continue_story()
-	return
+	GAMEMANAGER.new_location.connect(load_story)
+	GAMEMANAGER.load_new_state.connect(prime_new_state)
 	
-func replace_current_ink_file(new_ink_file_path):
-	ink_file_path = new_ink_file_path
-	_ink_player.ink_file = new_ink_file_path
+	_ink_player.connect("loaded", _story_loaded)
+	_ink_player.connect("continued", _continued)
+	_ink_player.connect("prompt_choices", _prompt_choices)
+	_ink_player.connect("ended", _ended)
 	
-func _story_loaded(success : bool):
-	if !success:
-		return
-		
-	if __GameManager.get_loaded_ink_state():
-		_ink_player.set_state(__GameManager.get_loaded_ink_state())
+	finished_typing.connect(await_next_sentence_signal)
 	
-func organize_line_tags(tags : Array):
-	var tag_dictionary : Dictionary = {}
-	
-	for tag : String in tags:
-		var tag_no_spaces = tag.strip_edges(true,true)
-		var key_value_pair = tag_no_spaces.split(":")
-		
-		if key_value_pair[1] == "true" or key_value_pair[1] == "false":
-			var bool_value = key_value_pair[1] == "true" if true else false
-			tag_dictionary[key_value_pair[0]] = bool_value
-			return tag_dictionary
-		
-		tag_dictionary[key_value_pair[0]] = key_value_pair[1]
-	
-	return tag_dictionary
 
-var continue_counter := 0
+func await_next_sentence_signal():
+	typing_state = false
+	can_call_next_sentence = true
 
-func _continue_story(knot_address : String = ""):
-	continue_counter += 1
-	if knot_address.length() > 0:
-		_ink_player.choose_path(knot_address)
-	
-	current_clickable.hide()
-	
-	if self.hidden: self.show()
-	
-	story_in_progress = true
-	
-	print("continue counter: ", continue_counter)
-	
-	if _ink_player.can_continue and !_ink_player.has_choices:
-		print("entered can continue")
-		var text = _ink_player.continue_story()
-		
-		if !_ink_player.get_current_tags().is_empty():
-			var tags = organize_line_tags(_ink_player.get_current_tags())
-			if tags.has("char"):
-				name_label.change_name_label(tags["char"])
-				current_char = tags["char"].strip_edges(true,true).to_lower()
-				
-				if tags.has("mood"):
-					character_portrait.texture = load(portraits + "/" + current_char + "/" + tags["mood"] + ".png")
-				else:
-					character_portrait.texture = load(portraits + "/" + current_char + "/neutral.png")
-				
-		
-		dialogue_label.visible_characters = 0
-		
-		dialogue_label.text = text
-		
-		type_out_line(text)
-		
-	elif _ink_player.has_choices:
-		choices_container.create_options(_ink_player.current_choices)
-		
-		block_interaction = true
-		
-		__GameManager.save_player_data()
-	
+func _input(event):
+	if event.is_action_pressed("skip_typing"):
+		if can_call_next_sentence:
+			call_next_sentence.emit()
+			can_call_next_sentence = false
+		elif is_talking:
+			#Global.play_sfx.emit("skip_dialogue")
+			DialogueLabel.visible_characters = -1
+			await_next_sentence_signal()
+
+func change_knot_stitch_gather(override_key: String = ""):
+	if override_key != "":
+		_ink_player.choose_path(override_key)
 	else:
-		story_in_progress = false
-		self.hide()
-		current_clickable.show()
-		
-
-func _skip_text_typing():
-	dialogue_label.visible_characters = -1
-	typing_in_progress = false
+		_ink_player.choose_path(override_key)
 	
-func type_out_line(text : String):
-	typing_in_progress = true
+	is_talking = true
 	
-	while dialogue_label.visible_characters != -1 or dialogue_label.visible_characters > text.length():
-		dialogue_label.visible_characters += 1
-		await get_tree().create_timer(0.05).timeout
-		pass
-		
-	typing_in_progress = false
+	_ink_player.continue_story()
 
 func _select_choice(choice_id : int, important : bool):
 	
 	_ink_player.choose_choice_index(choice_id)
 	
 	if important:
-		animation_player.play("bite_animation")
+		bite_animator.play("bite_animation")
 	
 	choices_container.clear_options()
-	block_interaction = false
-	self._continue_story()
+	waiting_for_choice = false
+
+	_ink_player.continue_story()
+
+#region Ink Signals
+
+func _story_loaded(success: bool):
+	if !success:
+		return
+	
+	story_has_been_loaded = true
+	
+	print("++++ Story was loaded ++++")
+
+	await _ink_player.set_variable("is_game", true)
+	
+	if state_to_load != "":
+		await _ink_player.set_state(state_to_load)
+	
+var treated_tags = func (tags):
+		var temp_dictionary : Dictionary
+		
+		for tag in tags:
+			var split_tag = tag.split(": ")
+			temp_dictionary[split_tag[0]] = split_tag[1]
+		
+		return temp_dictionary
+
+func _continued(text, tags):
+	self.visible = true
+	
+	typing_state = true
+	
+	var current_tags = treated_tags.call(tags)
+		
+	print(current_tags)
+	
+	if current_tags.has("autosave"):
+		
+		var state = await _ink_player.get_state()
+		
+		GAMEMANAGER.save_player_data(state)
+	
+	DialogueLabel.visible_characters = 0
+	DialogueLabel.text = text.replace("\"", "")
+	if current_tags.has("char"):
+		NameLabel.text = ("[p align=center]" + current_tags["char"])
+	
+	while DialogueLabel.visible_characters <= text.length() and DialogueLabel.visible_characters != -1:
+		DialogueLabel.visible_characters += 1
+		await get_tree().create_timer(0.05).timeout
+	
+	finished_typing.emit()
+	
+	await call_next_sentence
+	
+	_ink_player.continue_story()
+
+func _prompt_choices(choices):
+	if choices.size() > 0:
+		choices_container.create_options(choices)
+		
+		waiting_for_choice = true
+
+func _ended():
+	is_talking = false
+	
+	self.visible = false
+	
+	state_to_load = ""
+	
+	#Global.finished_dialogue.emit()
+
+#endregion

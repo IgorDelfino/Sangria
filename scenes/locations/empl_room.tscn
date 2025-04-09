@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ljaexua07sps"]
+[gd_scene load_steps=6 format=3 uid="uid://ljaexua07sps"]
 
 [ext_resource type="Script" path="res://assets/scripts/location.gd" id="1_mew0k"]
 [ext_resource type="Texture2D" uid="uid://c7lo5fph5regc" path="res://assets/sprites/backgrounds/temp/temp_employees_room.jpg" id="2_wecvj"]
 [ext_resource type="PackedScene" uid="uid://dyilnl0rmv67q" path="res://scenes/interactable.tscn" id="3_3ajgv"]
 [ext_resource type="Script" path="res://assets/scripts/clickables.gd" id="3_bmu3b"]
+[ext_resource type="PackedScene" uid="uid://ebhgi2kemk33" path="res://scenes/scene_audio_container.tscn" id="5_ajdls"]
 
-[node name="Location" type="Node2D"]
+[node name="Location" type="Node2D" node_paths=PackedStringArray("scene_audio_container")]
 script = ExtResource("1_mew0k")
+scene_audio_container = NodePath("SceneAudioContainer")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 3
@@ -33,3 +35,5 @@ InteractableType = 3
 location = NodePath("../..")
 ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
 scene_path = "res://scenes/locations/bar.tscn"
+
+[node name="SceneAudioContainer" parent="." instance=ExtResource("5_ajdls")]

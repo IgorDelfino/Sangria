@@ -1,12 +1,79 @@
-[gd_scene load_steps=5 format=3 uid="uid://spnq1mq2dn8h"]
+[gd_scene load_steps=17 format=3 uid="uid://spnq1mq2dn8h"]
 
 [ext_resource type="Script" path="res://assets/scripts/location.gd" id="1_yxucf"]
-[ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="2_82x6i"]
+[ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="2_qf5ys"]
 [ext_resource type="PackedScene" uid="uid://dyilnl0rmv67q" path="res://scenes/interactable.tscn" id="3_jg4bc"]
 [ext_resource type="Script" path="res://assets/scripts/clickables.gd" id="3_n0pue"]
+[ext_resource type="PackedScene" uid="uid://ebhgi2kemk33" path="res://scenes/scene_audio_container.tscn" id="5_otjsl"]
+[ext_resource type="AudioStream" uid="uid://ccrdo1ew8ilpk" path="res://assets/sounds/ambience/sangria_amb_pub_vazio.wav" id="6_08bvv"]
+[ext_resource type="AudioStream" uid="uid://dxydmof7oubhh" path="res://assets/sounds/songs/sangria_mus_pub_loop.wav" id="7_ie3dy"]
+[ext_resource type="Script" path="res://scenes/locations/neon_light.gd" id="8_e7nq4"]
 
-[node name="Location" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_61wyn"]
+offsets = PackedFloat32Array(0, 0.637771)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_81rfl"]
+gradient = SubResource("Gradient_61wyn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_ny2wr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.59]
+}
+
+[sub_resource type="Animation" id="Animation_ay8ck"]
+resource_name = "bar_light_flicker_1"
+length = 0.4
+step = 0.05
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1e+06, 1e+06, 1e+06, 1e+06, 1e+06),
+"update": 2,
+"values": [1.6, 0.0, 1.6, 0.0, 1.6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qskat"]
+_data = {
+"RESET": SubResource("Animation_ny2wr"),
+"bar_light_flicker_1": SubResource("Animation_ay8ck")
+}
+
+[sub_resource type="Gradient" id="Gradient_xrstn"]
+offsets = PackedFloat32Array(0, 0.879257)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_170ko"]
+gradient = SubResource("Gradient_xrstn")
+fill = 1
+fill_to = Vector2(1, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ksemv"]
+closed = false
+polygon = PackedVector2Array(29.1024, 598.999, 262.395, 148.535, 281.366, 160.57, 299.263, 161.69, 312.149, 156.825, 318.055, 148.935, 522.631, 540.082, 461.186, 564.428, 373.021, 585.005, 265.795, 598.451, 189.346, 602.876, 116.259, 601.151, 75.1381, 597.886, 34.0363, 594.077)
+
+[node name="Location" type="Node2D" node_paths=PackedStringArray("scene_audio_container")]
 script = ExtResource("1_yxucf")
+ink_file_path = "res://assets/ink files/save_test_file.ink.json"
+scene_audio_container = NodePath("SceneAudioContainer")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 3
@@ -22,7 +89,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_82x6i")
+texture = ExtResource("2_qf5ys")
 
 [node name="Clickables" type="Node" parent="."]
 script = ExtResource("3_n0pue")
@@ -37,6 +104,49 @@ scene_path = "res://scenes/locations/empl_room.tscn"
 [node name="Interactable2" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
 position = Vector2(768, 472)
 location = NodePath("../..")
-ink_knot = "Bernard"
+ink_knot = "test_start"
 ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
 scene_path = "res://scenes/locations/empl_room.tscn"
+
+[node name="SceneAudioContainer" parent="." instance=ExtResource("5_otjsl")]
+ambience = ExtResource("6_08bvv")
+soundtrack = ExtResource("7_ie3dy")
+
+[node name="AmbientDominantLight" type="CanvasModulate" parent="."]
+color = Color(0.404454, 0.391185, 0.546227, 1)
+
+[node name="NeonSign" type="PointLight2D" parent="." node_paths=PackedStringArray("flicker_animation_player", "timer")]
+position = Vector2(1492, 244)
+scale = Vector2(7.36719, 3.8125)
+color = Color(1, 0.341176, 0.2, 1)
+energy = 1.59
+texture = SubResource("GradientTexture2D_81rfl")
+script = ExtResource("8_e7nq4")
+flicker_animation_player = NodePath("AnimationPlayer")
+timer = NodePath("Timer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NeonSign"]
+libraries = {
+"": SubResource("AnimationLibrary_qskat")
+}
+
+[node name="Timer" type="Timer" parent="NeonSign"]
+
+[node name="SpotlightTest" type="PointLight2D" parent="."]
+position = Vector2(311.371, 433.504)
+rotation = 0.70463
+scale = Vector2(7.02608, 7.09055)
+color = Color(0.937255, 0.752941, 0.439216, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_170ko")
+texture_scale = 1.74
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="SpotlightTest"]
+visibility_layer = 0
+position = Vector2(-73.7284, -17.9294)
+rotation = -0.707326
+scale = Vector2(0.142654, 0.14278)
+skew = 0.00538993
+occluder = SubResource("OccluderPolygon2D_ksemv")
+
+[connection signal="timeout" from="NeonSign/Timer" to="NeonSign" method="flicker_bar_light"]
