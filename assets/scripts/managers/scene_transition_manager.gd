@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-class_name SceneTransition
+class_name SceneTransitionManager
 
 @export var current_scene_BG : TextureRect
 @export var animation_player : AnimationPlayer
@@ -9,6 +9,9 @@ var valid_animation_names := [
 	"paper_tear_transition_1",
 	"paper_tear_transition_2"
 	]
+	
+func _ready():
+	GAMEMANAGER.scene_transition_manager = self
 
 func replace_current_screen():
 	await RenderingServer.frame_post_draw

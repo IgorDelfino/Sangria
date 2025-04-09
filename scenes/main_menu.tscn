@@ -45,33 +45,41 @@ scale = Vector2(0.435, 0.435)
 texture = ExtResource("3_lfs7q")
 stretch_mode = 4
 
-[node name="Menu Buttons" type="VBoxContainer" parent="."]
+[node name="Menu Buttons" type="VBoxContainer" parent="." node_paths=PackedStringArray("load_game_button")]
 texture_filter = 1
-layout_mode = 0
-offset_top = 416.0
-offset_right = 496.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -400.0
+offset_right = 200.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = 15
 script = ExtResource("4_nkyfv")
+load_game_button = NodePath("Load Game")
 game_start_scene = "res://scenes/cutscenes/bedroom_cutscene.tscn"
+game_load_scene = "res://scenes/load_selector.tscn"
 
 [node name="New Game" type="Button" parent="Menu Buttons"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
-size_flags_vertical = 3
 text = "New Game"
 
 [node name="Load Game" type="Button" parent="Menu Buttons"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
-size_flags_vertical = 3
+disabled = true
 text = "Load Game
 "
 
 [node name="Close Game" type="Button" parent="Menu Buttons"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
-size_flags_vertical = 3
 text = "Close Game
 "
 

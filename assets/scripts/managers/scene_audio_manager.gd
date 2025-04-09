@@ -5,6 +5,9 @@ class_name SceneAudioManager
 @export var ambience_audio_track : AudioStreamPlayer2D
 @export var soundtrack_audio_track : AudioStreamPlayer2D
 
+func _ready():
+	GAMEMANAGER.scene_audio_manager = self
+
 func overwrite_current_soundtrack(scene_audio_container : SceneAudioContainer):
 	if scene_audio_container.ambience != null:
 		ambience_audio_track.bus = "Ambience"
@@ -12,8 +15,9 @@ func overwrite_current_soundtrack(scene_audio_container : SceneAudioContainer):
 		ambience_audio_track.play()
 		
 	else:
-		ambience_audio_track.bus = "MuffledAmbience"
-		ambience_audio_track.play()
+		#ambience_audio_track.bus = "MuffledAmbience"
+		#ambience_audio_track.play()
+		ambience_audio_track.stop()
 		
 	if scene_audio_container.soundtrack != null:
 		soundtrack_audio_track.stream = scene_audio_container.soundtrack

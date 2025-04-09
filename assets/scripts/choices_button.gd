@@ -2,7 +2,7 @@ extends Control
 
 class_name ChoicesButton
 
-static var dialogue_interface : DialogueInterface
+static var dialogue_interface : DialogueManager
 
 @export var margin_container : MarginContainer
 

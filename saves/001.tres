@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SaveResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://assets/resources/scripts/save_resource.gd" id="1_1qoyb"]
+
+[resource]
+script = ExtResource("1_1qoyb")
+name = "001"
+created_at = "4/8/2025 15:33"
+last_scene_path = "res://scenes/locations/bar.tscn"

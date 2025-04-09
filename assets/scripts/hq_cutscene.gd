@@ -26,7 +26,7 @@ var frame_path_array : PackedStringArray
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if input_pressed_should_go_next_scene and Input.is_action_just_pressed("skip_cutscene_frame"):
-		current_scene.go_to_scene(next_scene_path)
+		GAMEMANAGER.current_scene.go_to_scene(next_scene_path)
 	if Input.is_action_just_pressed("skip_cutscene_frame"):
 		skip_frame_fade()
 	pass

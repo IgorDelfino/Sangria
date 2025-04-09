@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://8vw4wddtwury"]
+
+[ext_resource type="Script" path="res://assets/scripts/load_card.gd" id="1_tic2i"]
+
+[node name="Control" type="Button"]
+custom_minimum_size = Vector2(0, 150)
+offset_right = 1072.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 40
+text = "Save - 001 - 18/02/2025 - 15:00"
+script = ExtResource("1_tic2i")
+
+[connection signal="pressed" from="." to="." method="_on_load_game_pressed"]
