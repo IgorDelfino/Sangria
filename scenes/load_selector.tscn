@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbhrgt1wcfknw"]
+[gd_scene load_steps=5 format=3 uid="uid://bbhrgt1wcfknw"]
 
 [ext_resource type="Script" path="res://assets/scripts/load_selector.gd" id="1_81rjl"]
 [ext_resource type="Texture2D" uid="uid://6okk0fcua4fm" path="res://assets/sprites/backgrounds/temp/temp_bar_area.jpg" id="2_4hhqj"]
 [ext_resource type="PackedScene" uid="uid://ebhgi2kemk33" path="res://scenes/scene_audio_container.tscn" id="3_i7lte"]
 [ext_resource type="AudioStream" uid="uid://ccrdo1ew8ilpk" path="res://assets/sounds/ambience/sangria_amb_pub_vazio.wav" id="4_nd06d"]
-[ext_resource type="AudioStream" uid="uid://dxydmof7oubhh" path="res://assets/sounds/songs/sangria_mus_pub_loop.wav" id="5_jbycs"]
 
 [node name="LoadSelector" type="Control" node_paths=PackedStringArray("load_card_containers", "scene_audio_container")]
 layout_mode = 3
@@ -52,7 +51,6 @@ offset_bottom = 1016.0
 
 [node name="SceneAudioContainer" parent="." instance=ExtResource("3_i7lte")]
 ambience = ExtResource("4_nd06d")
-soundtrack = ExtResource("5_jbycs")
 
 [node name="MainMenu" type="Button" parent="."]
 layout_mode = 0
