@@ -23,6 +23,7 @@ var scene_transition_manager : SceneTransitionManager
 
 signal load_new_state(next_scene_path, new_state)
 signal state_loaded(next_scene_path)
+signal hide_dialogue_box()
 signal finished_loading()
 signal new_location(ink_file_path : String)
 

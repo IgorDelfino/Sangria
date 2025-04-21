@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1ibju2pkpvuo"]
+[gd_scene load_steps=9 format=3 uid="uid://b1ibju2pkpvuo"]
 
 [ext_resource type="PackedScene" uid="uid://3ct5ihcbo4xd" path="res://scenes/scene_transition_manager.tscn" id="1_07od4"]
 [ext_resource type="PackedScene" uid="uid://co2dms5aml6gx" path="res://scenes/game_manager.tscn" id="2_o3pyy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://assets/scripts/managers/scene_audio_manager.gd" id="3_f2q11"]
 [ext_resource type="PackedScene" uid="uid://ce0ugwew1rrx6" path="res://scenes/save_manager.tscn" id="3_flyyo"]
 [ext_resource type="Script" path="res://assets/scripts/current_scene.gd" id="4_h1ca2"]
+[ext_resource type="PackedScene" uid="uid://c57q4phhvqvpp" path="res://scenes/components/pause_menu.tscn" id="6_3al0o"]
 [ext_resource type="PackedScene" uid="uid://vvbjjwyiaxv7" path="res://scenes/main_menu.tscn" id="6_ycwee"]
 
 [node name="BaseGameNode" type="Node2D"]
@@ -40,6 +41,11 @@ process_priority = 1
 visible = false
 z_index = 5
 mouse_filter = 0
+
+[node name="PauseMenu" parent="Interfaces" node_paths=PackedStringArray("current_scene", "dialogue_interface") instance=ExtResource("6_3al0o")]
+visible = false
+current_scene = NodePath("../../CurrentScene")
+dialogue_interface = NodePath("../DialogueInterface")
 
 [node name="CurrentScene" type="Node" parent="." node_paths=PackedStringArray("dialogue_interface", "ambience_stream", "soundtrack_stream", "scene_sound_manager")]
 script = ExtResource("4_h1ca2")
