@@ -28,12 +28,13 @@ func overwrite_current_soundtrack(scene_audio_container : SceneAudioContainer):
 		#ambience_audio_track.play()
 		ambience_audio_track.stop()
 		
-	if scene_audio_container.soundtrack != null:
+	if scene_audio_container.soundtrack.size() != 0:
 		if scene_audio_container.has_song_intro:
 			last_audio_container = scene_audio_container
 		
-		soundtrack_audio_track.stream = scene_audio_container.soundtrack[0]
-		soundtrack_audio_track.play()
+		if scene_audio_container.soundtrack.size() != 0:
+			soundtrack_audio_track.stream = scene_audio_container.soundtrack[0]
+			soundtrack_audio_track.play()
 
 	elif !scene_audio_container.should_play_music_if_null:
 		soundtrack_audio_track.stop()

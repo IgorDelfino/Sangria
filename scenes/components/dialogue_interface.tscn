@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://assets/scripts/choices_container.gd" id="4_jbc45"]
 [ext_resource type="Texture2D" uid="uid://bkhbucby612pu" path="res://assets/sprites/ui/unnamed_dialogue_box.png" id="4_jeuri"]
 [ext_resource type="Texture2D" uid="uid://c6nqg4bkm8xg5" path="res://assets/sprites/ui/bite/Bite_1.png" id="4_ji0bd"]
-[ext_resource type="Texture2D" uid="uid://2tjjlbty34ie" path="res://assets/sprites/characters/bernard/neutral.png" id="4_n5iup"]
 [ext_resource type="Texture2D" uid="uid://spat07wc5f6x" path="res://assets/sprites/ui/bite/Bite_0.png" id="4_tsyjk"]
 [ext_resource type="Theme" uid="uid://dhsxw5p2wtbye" path="res://assets/themes/dialogue_theme.tres" id="5_pdom7"]
 [ext_resource type="Texture2D" uid="uid://ck7oq1qkusm11" path="res://assets/sprites/ui/bite/Bite_2.png" id="6_8ofum"]
@@ -17,6 +16,9 @@
 [ext_resource type="Theme" uid="uid://72o2pxpktng8" path="res://assets/themes/name_theme.tres" id="8_p7751"]
 
 [sub_resource type="Resource" id="Resource_uaqt5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vj4vm"]
+load_path = "res://.godot/imported/neutral.png-f9bcbb5030da86dd680425610ab56f77.ctex"
 
 [sub_resource type="Animation" id="Animation_gyp6q"]
 length = 0.001
@@ -80,9 +82,9 @@ ink_file = SubResource("Resource_uaqt5")
 loads_in_background = false
 
 [node name="Portrait" type="Sprite2D" parent="."]
-position = Vector2(960, 416)
-scale = Vector2(0.79, 0.79)
-texture = ExtResource("4_n5iup")
+position = Vector2(960, 496)
+scale = Vector2(0.400222, 0.400222)
+texture = SubResource("CompressedTexture2D_vj4vm")
 
 [node name="Bite" type="Sprite2D" parent="."]
 position = Vector2(1703, 167)

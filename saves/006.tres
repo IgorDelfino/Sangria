@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SaveResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://assets/resources/scripts/save_resource.gd" id="1_f2dj1"]
+
+[resource]
+script = ExtResource("1_f2dj1")
+name = "006"
+created_at = "4/17/2025 22:42"
+last_scene_path = "res://scenes/locations/bar.tscn"
+ink_state_in_json = "{\"flows\":{\"DEFAULT_FLOW\":{\"callstack\":{\"threads\":[{\"callstack\":[{\"exp\":false,\"type\":0,\"temp\":{\"$r\":{\"^->\":\"test_start.0.g-1.c-8.$r2\"}}}],\"threadIndex\":9,\"previousContentObject\":\"test_start.0.g-2.20\"}],\"threadCounter\":9},\"outputStream\":[\"^Your sequence is \",\"^1\",\"^3\",\"^3\",\"^! \",\"#\",\"^char: Bernard \",\"/#\",\"#\",\"^autosave: true\",\"/#\",\"\\n\"],\"currentChoices\":[]}},\"currentFlowName\":\"DEFAULT_FLOW\",\"variablesState\":{\"is_game\":true,\"first\":1,\"second\":3,\"third\":3,\"has_sequence\":true},\"evalStack\":[],\"visitCounts\":{\"\":2,\"test_start\":1,\"test_start.0.c-0\":1,\"test_start.0.g-0\":1,\"test_start.0.g-0.c-5\":1,\"test_start.0.g-1\":1,\"test_start.0.g-1.c-8\":1,\"test_start.0.g-2\":1},\"turnIndices\":{},\"turnIdx\":3,\"storySeed\":54,\"previousRandom\":0,\"inkSaveVersion\":10,\"inkFormatVersion\":21}"
