@@ -42,10 +42,11 @@ visible = false
 z_index = 5
 mouse_filter = 0
 
-[node name="PauseMenu" parent="Interfaces" node_paths=PackedStringArray("current_scene", "dialogue_interface") instance=ExtResource("6_3al0o")]
+[node name="PauseMenu" parent="Interfaces" node_paths=PackedStringArray("current_scene", "dialogue_interface", "scene_audio_manager") instance=ExtResource("6_3al0o")]
 visible = false
 current_scene = NodePath("../../CurrentScene")
 dialogue_interface = NodePath("../DialogueInterface")
+scene_audio_manager = NodePath("../../Sounds/SceneAudioManager")
 
 [node name="CurrentScene" type="Node" parent="." node_paths=PackedStringArray("dialogue_interface", "ambience_stream", "soundtrack_stream", "scene_sound_manager")]
 script = ExtResource("4_h1ca2")

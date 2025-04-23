@@ -3,12 +3,29 @@ extends Control
 @export var current_scene : CurrentScene
 @export var dialogue_interface : DialogueManager
 
+@export var scene_audio_manager : SceneAudioManager
+
+@export var volume_controller : VolumeController
 var should_restore_dialogue_interface : bool = false
+
+@export var main_tab : VBoxContainer
+@export var options_tab : VBoxContainer
 
 var paused : bool = false
 
+func _show_main_tab():
+	options_tab.hide()
+	main_tab.show()
+	
+func _show_options_tab():
+	main_tab.hide()
+	options_tab.show()
+
 func _ready():
 	self.hide()
+	
+	volume_controller.audio_manager = scene_audio_manager
+	
 
 func toggle_pause():
 	should_restore_dialogue_interface = dialogue_interface.is_talking
@@ -42,9 +59,6 @@ func resume_game():
 func back_to_main_menu():
 	toggle_pause()
 	current_scene.go_to_scene("res://scenes/main_menu.tscn")
-	
-func options():
-	pass
 	
 func quit_game():
 	get_tree().quit()

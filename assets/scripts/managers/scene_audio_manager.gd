@@ -12,6 +12,8 @@ func _ready():
 	
 	soundtrack_audio_track.connect("finished", play_song_loop)
 	
+	
+	
 func play_song_loop():
 	print("+++++++++ intro has finished +++++++++")
 	soundtrack_audio_track.stream = last_audio_container.soundtrack[1]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundConfigKeeper" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://assets/resources/scripts/sound_config.gd" id="1_3d168"]
+
+[resource]
+script = ExtResource("1_3d168")
+main = 1.0
+bgm = 1.0
+sfx = 1.0
