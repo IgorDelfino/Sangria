@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c57q4phhvqvpp"]
 
 [ext_resource type="Script" path="res://assets/scripts/managers/pause_menu_manager.gd" id="1_s2ceo"]
-[ext_resource type="Script" path="res://scenes/components/volume.gd" id="2_axp40"]
+[ext_resource type="Script" path="res://assets/scripts/managers/volume.gd" id="2_axp40"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("volume_controller", "main_tab", "options_tab")]
 process_mode = 3
