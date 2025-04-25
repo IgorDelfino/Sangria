@@ -72,7 +72,7 @@ polygon = PackedVector2Array(29.1024, 598.999, 262.395, 148.535, 281.366, 160.57
 
 [node name="Location" type="Node2D" node_paths=PackedStringArray("scene_audio_container")]
 script = ExtResource("1_yxucf")
-ink_file_path = "res://assets/ink files/save_test_file.ink.json"
+ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
 scene_audio_container = NodePath("SceneAudioContainer")
 
 [node name="BackgroundControl" type="Control" parent="."]
@@ -94,17 +94,31 @@ texture = ExtResource("2_qf5ys")
 [node name="Clickables" type="Node" parent="."]
 script = ExtResource("3_n0pue")
 
-[node name="Interactable" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
-position = Vector2(1716, 421)
-InteractableType = 3
+[node name="Bernard" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
+position = Vector2(768, 472)
 location = NodePath("../..")
+ink_knot = "Bernard"
 ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
 scene_path = "res://scenes/locations/empl_room.tscn"
 
-[node name="Interactable2" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
-position = Vector2(768, 472)
+[node name="Loretta" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
+position = Vector2(1816, 478)
 location = NodePath("../..")
-ink_knot = "test_start"
+ink_knot = "Loretta"
+ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
+scene_path = "res://scenes/locations/empl_room.tscn"
+
+[node name="Alec" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
+position = Vector2(216, 360)
+location = NodePath("../..")
+ink_knot = "Alec"
+ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
+scene_path = "res://scenes/locations/empl_room.tscn"
+
+[node name="Jo" parent="Clickables" node_paths=PackedStringArray("location") instance=ExtResource("3_jg4bc")]
+position = Vector2(1112, 778)
+location = NodePath("../..")
+ink_knot = "Jo"
 ink_file_path = "res://assets/ink files/bar1alterna.ink.json"
 scene_path = "res://scenes/locations/empl_room.tscn"
 

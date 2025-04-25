@@ -36,21 +36,25 @@ var waiting_for_choice : bool = false
 var current_clickable : InteractableArea
 
 var state_to_load : String = ""
+var scene_start_dialogue_knot : String = ""
 
 func prime_new_state(last_scene_path, state):
 	state_to_load = state
+	
+func prime_new_scene_start_dialogue(knot):
+	scene_start_dialogue_knot = knot
+	
+func play_scene_start_dialogue():
+	if scene_start_dialogue_knot != "":
+		change_knot_stitch_gather(scene_start_dialogue_knot)
+		scene_start_dialogue_knot = ""
 
 func load_story(ink_file_path):
-	print("++++ Story is being loaded ++++")
 	story_has_been_loaded = false
 	_ink_player.ink_file = load(ink_file_path)
 	
-	
-	print("<l> ",state_to_load," <l>")
-	
 	await _ink_player.create_story()
 	
-
 func _ready():
 	GAMEMANAGER.dialogue_interface = self
 	
@@ -62,6 +66,7 @@ func _ready():
 	_ink_player.connect("prompt_choices", _prompt_choices)
 	_ink_player.connect("ended", _ended)
 	
+	GAMEMANAGER.finished_scene_enter_transition.connect(play_scene_start_dialogue)
 	finished_typing.connect(await_next_sentence_signal)
 	
 
@@ -115,6 +120,9 @@ func _story_loaded(success: bool):
 	
 	if state_to_load != "":
 		await _ink_player.set_state(state_to_load)
+		
+	if _ink_player.get_variable("has_scene_enter_dialogue"):
+		prime_new_scene_start_dialogue(_ink_player.get_variable("scene_start_knot"))
 	
 var treated_tags = func (tags):
 		var temp_dictionary : Dictionary
@@ -135,7 +143,6 @@ func _continued(text, tags):
 	print(current_tags)
 	
 	if current_tags.has("autosave"):
-		
 		var state = await _ink_player.get_state()
 		
 		GAMEMANAGER.save_player_data(state)
@@ -143,7 +150,10 @@ func _continued(text, tags):
 	DialogueLabel.visible_characters = 0
 	DialogueLabel.text = text.replace("\"", "")
 	if current_tags.has("char"):
-		NameLabel.text = ("[p align=center]" + current_tags["char"])
+		if current_tags.has("anon"):
+			NameLabel.text = ("[p align=center]" + "???")
+		else:
+			NameLabel.text = ("[p align=center]" + current_tags["char"])
 	
 	while DialogueLabel.visible_characters <= text.length() and DialogueLabel.visible_characters != -1:
 		DialogueLabel.visible_characters += 1

@@ -26,6 +26,7 @@ signal state_loaded(next_scene_path)
 signal hide_dialogue_box()
 signal finished_loading()
 signal new_location(ink_file_path : String)
+signal finished_scene_enter_transition()
 
 var last_scene_path : String
 var loaded_ink_state : String

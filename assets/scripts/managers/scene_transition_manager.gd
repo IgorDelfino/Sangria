@@ -25,3 +25,5 @@ func replace_current_screen():
 func play_transition_animation():
 	animation_player.play(valid_animation_names.pick_random())
 	
+func propagate_animation_finished(_anim_name):
+	GAMEMANAGER.emit_signal("finished_scene_enter_transition")

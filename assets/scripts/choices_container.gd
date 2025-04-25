@@ -20,10 +20,10 @@ func create_options(choices : Array):
 		choice_button.dialogue_interface = dialogue_interface
 		
 		if choice.tags:
-			var tags_dictionary = dialogue_interface.organize_line_tags(choice.tags)
+			var current_tags = dialogue_interface.treated_tags.call(choice.tags)
 			
-			if tags_dictionary.has("important"):
-				choice_button.is_important = tags_dictionary["important"]
+			if current_tags.has("important"):
+				choice_button.is_important = current_tags["important"]
 		
 		add_child(choice_button)
 		choice_id += 1
