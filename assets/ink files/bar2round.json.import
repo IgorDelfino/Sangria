@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://bsain28bcf6fj"
+path="res://.godot/imported/bar2round.json-0c6687aded27a05add3dc51d73bcd2a0.res"
+
+[deps]
+
+source_file="res://assets/ink files/bar2round.json"
+dest_files=["res://.godot/imported/bar2round.json-0c6687aded27a05add3dc51d73bcd2a0.res"]
+
+[params]
+
+compress=true

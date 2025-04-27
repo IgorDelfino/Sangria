@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://bvbo4fg05ufmk"
+path="res://.godot/imported/apartment.json-331153ebcdfc3525f2263713ce30c456.res"
+
+[deps]
+
+source_file="res://assets/ink files/apartment.json"
+dest_files=["res://.godot/imported/apartment.json-331153ebcdfc3525f2263713ce30c456.res"]
+
+[params]
+
+compress=true

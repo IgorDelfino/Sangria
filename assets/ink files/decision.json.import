@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://b7begf3i7dob8"
+path="res://.godot/imported/decision.json-9dad57e48d096a96aa859b3ef6224d94.res"
+
+[deps]
+
+source_file="res://assets/ink files/decision.json"
+dest_files=["res://.godot/imported/decision.json-9dad57e48d096a96aa859b3ef6224d94.res"]
+
+[params]
+
+compress=true
